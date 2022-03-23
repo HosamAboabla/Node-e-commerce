@@ -1,0 +1,27 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "## Team members: - Hosam Sayed Ahmed Aboabla - Galal Nasser Mohamed Elfeky - Mohammed Essam Mohammed Abu El-Nasr - Ahmed Fayez Basiony Hussien - Adel ma'mon elwan - Abdallah Alaa Ali Salem",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HosamAboabla/Node-e-commerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HosamAboabla/Node-e-commerce/issues"
+  },
+  "homepage": "https://github.com/HosamAboabla/Node-e-commerce#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.8",
+    "nodemon": "^2.0.15"
+  }
+}

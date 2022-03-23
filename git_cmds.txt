@@ -1,0 +1,20 @@
+// create brance
+$ git branch branch_name
+
+// view all branches
+git branch -a
+
+// change to branch
+git checkout branch_name
+
+// delete branch
+git branch -D branch_name
+
+// merging branch
+git merge branch_name
+
+// update local repo
+git pull origin main
+
+// push branch
+git push origin branch_name
