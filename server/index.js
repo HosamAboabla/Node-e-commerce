@@ -4,7 +4,7 @@ const app = express();
 
 const routes = require('./routes');
 const keys = require('./config/keys');
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
 
 // To handle form and json requrests
 app.use(express.urlencoded({ extended : true }));
