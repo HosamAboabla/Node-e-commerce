@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path : 'doc_2022-03-26_21-27-21.env'});
 const express = require("express");
 const app = express();
 
@@ -18,17 +18,15 @@ const {database , port} = keys;
 
 
 // connect to mongo database
-/*
+
 mongoose.connect(database.url, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
   })
   .then(() =>
     console.log('Connect to mongo db successfully')
   )
   .catch(err => console.log(err));
-*/
+
 
 const server = app.listen(port , () => {
     console.log(`Listening on port ${port}`);
