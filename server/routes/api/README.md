@@ -1,6 +1,33 @@
 # Routes
 
 ## User
+    1- Get all products:
+        $ [GET] /api/products/list/
+    2- Get specific product:
+        $ [GET] /api/products/list/product_id
+    3- Create new product:
+        $ [POST] /api/products/create/
+        body : {
+            "email": "email@yahoo.com",
+            "firstName": "first_name",
+            "lastName": "last_name",
+            "isAdmin": true,
+            "password": "strong_password"
+        }
+    
+    4- Update product:
+        $ [PUT] /api/user/products/product_id
+        body : {
+            "email": "updated_email@yahoo.com",
+            "firstName": "updated_first_name",
+            "lastName": "updated_last_name",
+            "isAdmin": false,
+            "password": "updated_strong_password"
+        }
+    5- Delete product:
+        $ [DELETE] /api/products/delete/user_id
+
+## User
     1- Get all users:
         $ [GET] /api/user/list/
     2- Get specific user:
