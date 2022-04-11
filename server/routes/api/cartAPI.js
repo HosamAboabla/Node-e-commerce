@@ -4,7 +4,6 @@ const router = express.Router();
 
 const Cart = require('../../models/cart.js');
 
-router.use(express.json())
 
 // get cart with user id 
 router.get('/user/:userid' , async (request , responce) => {

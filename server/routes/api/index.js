@@ -7,10 +7,10 @@ const CartRoutes = require('./cartAPI')
 const OrderRoutes = require('./orderAPI')
 
 
-router.use('/order' , OrderRoutes);
-router.use('/cart' , CartRoutes);
-router.use('/product' , productRoutes);
-router.use('/user' , userRoutes);
+router.use('/orders' , OrderRoutes);
+router.use('/carts' , CartRoutes);
+router.use('/products' , productRoutes);
+router.use('/users' , userRoutes);
 
 
 module.exports = router;

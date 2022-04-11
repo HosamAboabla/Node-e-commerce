@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
 
-router.use(express.json())
 
 // get all users
 router.get('/list' , async (request , responce) => {
