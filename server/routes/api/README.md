@@ -1,6 +1,6 @@
 # Routes
 
-## User
+## Products
     1- Get all products:
         $ [GET] /api/products/list/
     2- Get specific product:
@@ -31,7 +31,7 @@
     5- Delete product:
         $ [DELETE] /api/products/delete/user_id
 
-## User
+## Users
     1- Get all users:
         $ [GET] /api/users/list/
     2- Get specific user:
