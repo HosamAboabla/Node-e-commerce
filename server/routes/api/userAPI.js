@@ -1,7 +1,5 @@
 const express = require('express');
-
 const router = express.Router();
-
 const Users = require('../../models/user.js');
 
 router.use(express.json())
@@ -13,25 +11,21 @@ router.get('/list' , async (request , responce) => {
         responce.status(200).json(userList);
     }
     catch(err){
-        responce.status(400).json({Message:'There was an error fetching the data',Error:err});
+        responce.status(500).json({Message:'There was an ERROR fetching the data',Error:err});
     }
 })
 
 // get user with id 
 router.get('/list/:id' , async (request,responce) => {
     try{
-        // console.log("this is userse: ",Users,request.params.id)
         const user = await Users.findById(request.params.id);
-        // console.log('ussssssssssssssssser',user)
-        // if (!user) return responce.status(404).send('The user with the given ID was not found')
         responce.status(200).json(user);
     }
     catch(err){
-        responce.status(400).json({Message:'There was an error fetching the data',Error:err});
+        responce.status(500).json({Message:`There was an ERROR fetching the user data with ID :${request.params.id}`,Error:err});
     }
 })
 
-// create new user
 router.post('/create' , async(request,responce) => {
     try{
         const item = {
@@ -41,14 +35,12 @@ router.post('/create' , async(request,responce) => {
             PhoneNumber: request.body.PhoneNumber,
             isAdmin : request.body.isAdmin,
             password : request.body.password,
-            // timestamps : request.body.timestamps
         }
-        // console.log(request.body)  // for dubugging
         const newUser = new Users(item);
         await newUser.save()
-        responce.status(200).send(`new user was created: ${newUser}`)
+        responce.status(201).send(`new user was created: ${newUser}`)
     } catch(err) {
-        responce.status(400).json({ErrorMessage: err})
+        responce.status(500).json({Message: 'There was an ERROR creating the user',Error: err})
     }
 
 })
@@ -65,20 +57,20 @@ router.put('/update/:id' , async (request,responce) => {
                 PhoneNumber: request.body.PhoneNumber,
                 isAdmin : request.body.isAdmin,
                 password : request.body.password,}});
-        responce.json(updated)
+        await updated.save()
+        responce.status(201).json(updated)
     }catch(err){
-        responce.status(400).json({Message:'There was an error Updating the data',Error:err});
+        responce.status(500).json({Message:`There was an ERROR Updating the user data with ID : ${request.params.id}`,Error:err});
     }
-
-    // responce.status(404).send('The user with the given ID was not found')
 })
 
 router.delete('/delete/:id', async (request,responce) => {
     try{
-        const removed = await Users.remove({_id : request.params.id});
-        responce.json(removed);
+        const removed = await Users.deleteOne({_id : request.params.id});
+        responce.status(200).json(removed);
     }catch(err){
-        responce.status(400).json({Message: "The user hasn't been deleted",Error: err})
+        console.log(err.Message)
+        responce.status(500).json({Message: "The user hasn't been deleted",Error: err})
     }
 })
 

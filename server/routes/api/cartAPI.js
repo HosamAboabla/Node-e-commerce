@@ -6,11 +6,41 @@ const Cart = require('../../models/cart.js');
 
 router.use(express.json())
 
-// get all users
-router.get('/list' , (request , responce) => {
-    console.log(`this is what in the cart ${Cart}`);
-    Users.find().then((user) =>{
-        responce.send(user)
-    }).catch(responce.send('There was an error fetching the data'))
+// get cart with user id 
+router.get('/user/:userid' , async (request , responce) => {
+    try{
+        const userCart = await  Cart.find().where('user').equals(request.body.userid);
+        responce.status(200).json(userCart);
+    }
+    catch(err){
+        responce.status(500).json({Message:'There was an ERROR fetching the data',Error:err});
+    }
 
 })
+
+// get cart with cart id 
+router.get('/:id' , async (request , responce) => {
+    try{
+        const userCart = await  Cart.findById(request.body.id);
+        responce.status(200).json(userCart);
+    }
+    catch(err){
+        responce.status(500).json({Message:'There was an ERROR fetching the data',Error:err});
+    }
+
+})
+
+router.post('/create' , async(request,responce) => {
+    try{
+        const newCart = new Cart({user : request.body.user});
+        await newCart.save()
+        responce.status(201).send(`new user was created: ${newCart}`)
+    } catch(err) {
+        responce.status(500).json({Message: 'There was an ERROR creating the user',Error: err})
+    }
+
+})
+
+
+
+module.exports = router;
