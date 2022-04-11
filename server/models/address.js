@@ -3,15 +3,10 @@ const Schema = mongoose.Schema;
 
 const AddressSchema = new Schema(
     {
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'user'
-        },
         address: {
             type: String
         },
         city: String,
-        state: String,
         country: String,
         isDefault: {
             type: Boolean,
