@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path : 'doc_2022-03-26_21-27-21.env'});
 const express = require("express");
 const app = express();
 
