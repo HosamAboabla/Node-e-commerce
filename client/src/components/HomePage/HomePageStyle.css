@@ -1,0 +1,77 @@
+*{
+    margin:0;
+    padding:0;
+  }
+.container {
+    margin: 55px;
+    border: 2px solid #ccc;
+    float: left;
+    height: 280px;
+    width: 260px;
+    background-color: #ddd;
+  }
+  
+.container img {
+    margin:0px;
+    padding-left: 0px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    height: 150px;
+    width: 250px;
+  }
+  
+.container h4 {
+    padding-left: 8px;
+  }
+  
+.container h3 {
+    padding: 4px 6px;
+    float: right;
+    font-size: 20px;;
+  }
+  
+.container a {
+    padding: 4px 6px;
+    background: white;
+    border: 1px solid #04aa6d;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    display: inline-block;
+    /* border-radius: 4px; */
+    transition-duration: 0.4s;
+    text-decoration: none;
+  }
+.container a:hover {
+    background: #04aa6d;
+  }
+  
+.products {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-gap: 3em;
+  }
+  
+  /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
+    
+  @media screen and (max-width: 600px) {
+      .topnav a,
+      .topnav form {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+      }
+      .topnav form {
+        border: 1px solid #ccc;
+      }
+ }*/
+  
