@@ -11,6 +11,10 @@
 
 ## Installing dependencies
     $ npm install
+    $ npm run client-install
+    $ npm run client-build
 
 ## Running command
-    $ npm run dev
+    $ npm run start
+
+# http://localhost:5000/
