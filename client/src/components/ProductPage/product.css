@@ -1,0 +1,66 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Cairo', sans-serif;}
+
+.product{
+    display:flex;
+    flex-direction: row ;
+    font-size: 12px;
+}
+
+img{
+    width: 400px;
+    margin-top : 50px ;
+    margin-left: 150px;
+}
+
+.details{
+    padding-left : 50px;
+    padding-right : 50px;
+    margin-top :50px;
+    display: flex;
+    flex-direction: column;
+    width:600px;    
+}
+.details .title-price{
+    margin-bottom: 1em;
+    font-size: 2.5em;
+    color:#333;
+}
+
+.details .title-price .dollars{
+    padding-bottom: 0.5em;
+    font-size: 0.75em;
+    color:#04aa6d;
+    border-bottom: 1px solid #333 ;
+}
+.details button{
+    margin-right: auto;
+    margin-bottom: 2em;
+    padding: 0.55em 1em;
+    background: white;
+    border: 1px solid #04aa6d;
+    color: #333;
+    font-size: 1.25em;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 4px; 
+    font-weight: bold;    
+}
+.details button:hover {
+    background: #04aa6d;
+}
+.details .description{
+    font-size: 1.25em;
+    overflow-x:auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+}
+.details .description h3{
+    color: #333;
+}
+.details .price{
+    font-size: 1.3em;
+}
