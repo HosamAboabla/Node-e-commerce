@@ -2,7 +2,7 @@ import NavBar from './components/NavBar/NavBar';
 import { Routes, Route} from 'react-router-dom' //react router
 import Product from './components/ProductPage/Product';
 import HomePage from './components/HomePage/HomePage';
-import Cart from './components/Cart/Cart'
+import Cart from './components/Cart/Cart';
 
 function App() {
   return (
