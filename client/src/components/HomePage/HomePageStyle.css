@@ -3,27 +3,37 @@
     padding:0;
   }
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 55px;
     border: 2px solid #ccc;
     float: left;
-    height: 280px;
+    height: 290px;
     width: 260px;
     background-color: #ddd;
+    border-radius: 2px;
+
   }
   
 .container img {
-    margin:0px;
-    padding-left: 0px;
-    padding-right: 15px;
-    padding-top: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
     margin-bottom: 15px;
-    border-radius: 4px;
-    height: 150px;
-    width: 250px;
+    border-radius: 2px;
+    max-width: 230px;
+    max-height: 150px; 
+    height : auto ;
+    width: auto;
   }
   
 .container h4 {
     padding-left: 8px;
+    width : 230px ;
+    height : 30px;
+    overflow-y:hidden;
+    overflow-x: hidden;
   }
   
 .container h3 {
@@ -44,6 +54,7 @@
     /* border-radius: 4px; */
     transition-duration: 0.4s;
     text-decoration: none;
+    margin:2px;
   }
 .container a:hover {
     background: #04aa6d;
