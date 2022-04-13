@@ -4,7 +4,9 @@
   "description": "## Team members: - Hosam Sayed Ahmed Aboabla - Galal Nasser Mohamed Elfeky - Mohammed Essam Mohammed Abu El-Nasr - Ahmed Fayez Basiony Hussien - Adel ma'mon elwan - Abdallah Alaa Ali Salem",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "client-install": "npm install --prefix client",
+    "client-build": "npm run build --prefix client"
   },
   "repository": {
     "type": "git",
