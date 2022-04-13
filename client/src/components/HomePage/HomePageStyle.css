@@ -11,8 +11,9 @@
     float: left;
     height: 290px;
     width: 260px;
-    background-color: #ddd;
-    border-radius: 2px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow:hsl(0, 0%, 80%) 0 0 16px;
 
   }
   
