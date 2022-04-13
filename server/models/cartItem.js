@@ -8,14 +8,6 @@ const CartItemSchema = new Schema(
             ref: 'product'
         },
         quantity: Number,
-        purchasePrice: {
-            type: Number,
-            default: 0
-        },
-        totalPrice: {
-            type: Number,
-            default: 0
-        },
         status: {
             type: String,
             default: 'Not processed',
