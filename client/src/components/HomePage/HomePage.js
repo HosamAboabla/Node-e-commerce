@@ -1,5 +1,6 @@
 import HomePageProduct from "./HomePageProduct";
 import useFetch from "../../useFetch";
+import Loading from "../Loading/Loading";
 
 import "./HomePageStyle.css";
 
@@ -10,7 +11,7 @@ const HomePage = () => {
     return (
         <div>
             {error && <div> {error} </div>} 
-            {isPending && <div> loading... </div>}
+            {isPending && <Loading/>}
             {products && products.map(product => <HomePageProduct product={product}/>)}
         </div>  
     )
