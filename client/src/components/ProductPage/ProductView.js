@@ -4,7 +4,7 @@ const ProductView = ({product}) => {
     return ( 
         <div className="product">
             <div className="photo">
-                <img src={product.image} />
+                <img className="image" src={product.image} />
             </div>
             <div className="details">
                 <div className="title-price">

@@ -3,64 +3,91 @@
     padding: 0px;
     font-family: 'Cairo', sans-serif;}
 
+.productpage{
+    background-color:#F2F2F2 ;
+    width: 100%;
+    height:110vh;
+    min-height: 109vh;
+    background-attachment: fixed;
+}
 .product{
+    background-color: white;
+    height: 100%;
+    min-height:100vh;
+    width:640px;
+    padding: 20px;
     display:flex;
     flex-direction: row ;
     font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-img{
-    width: 400px;
-    margin-top : 50px ;
-    margin-left: 150px;
+.image{
+    margin-top: 50px ;
+    width: 250px;
 }
 
 .details{
-    padding-left : 50px;
-    padding-right : 50px;
-    margin-top :50px;
+    margin-top: 50px;
+    width:300px; 
+    margin-left : 50px;
     display: flex;
     flex-direction: column;
-    width:600px;    
 }
 .details .title-price{
-    margin-bottom: 1em;
     font-size: 2.5em;
-    color:#333;
 }
 
 .details .title-price .dollars{
     padding-bottom: 0.5em;
     font-size: 0.75em;
-    color:#04aa6d;
-    border-bottom: 1px solid #333 ;
+    color:#448FF2;
+    border-bottom: 1px solid #ccc;
 }
 .details button{
-    margin-right: auto;
-    margin-bottom: 2em;
-    padding: 0.55em 1em;
-    background: white;
-    border: 1px solid #04aa6d;
-    color: #333;
-    font-size: 1.25em;
+    margin-bottom: 0.5em;
+    padding: 6px 10px;
+    background: #4FBF30;
+    border: 1px solid white;
+    color: white;
+    font-size: 15px;
     cursor: pointer;
     transition-duration: 0.4s;
-    border-radius: 4px; 
-    font-weight: bold;    
+    display: inline-block;
+    border-radius: 4px;
+    text-decoration: none;
+    margin:2px;  
 }
 .details button:hover {
-    background: #04aa6d;
+    background-color: #44A629;
+    color: white;
 }
 .details .description{
     font-size: 1.25em;
-    overflow-x:auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2em;
+    width:250px;
+    overflow-x:none;
+    margin:1em auto;
 }
-.details .description h3{
-    color: #333;
-}
+
 .details .price{
     font-size: 1.3em;
+}
+
+@media only screen and (max-width:600px) {
+    .product{
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        width:350px;
+        height:200vh;
+
+    }
+    .product .photo{
+        margin: 0px;
+    }
+    .product .details{
+        margin:0px;
+        margin-top: 40px;
+    }
 }

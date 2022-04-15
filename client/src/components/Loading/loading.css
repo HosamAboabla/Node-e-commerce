@@ -1,8 +1,8 @@
 .loadingDiv{
     width:70%;
-    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 50px;
 }
 .square {
     margin-left:auto;
@@ -11,9 +11,7 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
     width: 100px;
-    height: 100px;
-    background-color: white;
-    
+    height: 100px;    
 }
 .c1{
     position: absolute;
@@ -22,7 +20,7 @@
     width:12px;
     height:12px;
     border-radius: 50%;
-    background-color: #04aa6d;
+    background-color: #448FF2;
     animation-name: loading;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -34,7 +32,7 @@
     width:11px;
     height:11px;
     border-radius: 50%;
-    background-color: #04aa6d;
+    background-color: #448FF2;
     animation-name: loading;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -46,7 +44,7 @@
     width:10px;
     height:10px;
     border-radius: 50%;
-    background-color:#04aa6d;
+    background-color:#448FF2;
     animation-name: loading;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -58,7 +56,7 @@
     width:9px;
     height:9px;
     border-radius: 50%;
-    background-color:#04aa6d;
+    background-color:#448FF2;
     animation-name: loading;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -70,7 +68,7 @@
     width:8px;
     height:8px;
     border-radius: 50%;
-    background-color:#04aa6d;
+    background-color:#448FF2;
     animation-name: loading;
     animation-duration: 0s;
     animation-iteration-count: infinite;
@@ -82,7 +80,7 @@
     width:7px;
     height:7px;
     border-radius: 50%;
-    background-color:#04aa6d;
+    background-color:#448FF2;
     animation-name: loading;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -94,7 +92,7 @@
     width:6px;
     height:6px;
     border-radius: 50%;
-    background-color:#04aa6d;
+    background-color:#448FF2;
     animation-name: loading;
     animation-duration: 3s;
     animation-iteration-count: infinite;

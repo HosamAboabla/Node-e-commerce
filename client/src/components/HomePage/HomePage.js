@@ -9,11 +9,13 @@ const HomePage = ({cart , setCart }) => {
     const {data : products , error , isPending} = useFetch(link);
     console.log("products" , products);
     return (
-        <div>
+    <div className="all">    
+        <div className="HomeGrid">
             {error && <div> {error} </div>} 
             {isPending && <Loading/>}
             {products && products.map(product => <HomePageProduct key={product._id} product={product} cart = {cart} setCart={setCart}/>)}
         </div>  
+    </div>  
     )
 }
 

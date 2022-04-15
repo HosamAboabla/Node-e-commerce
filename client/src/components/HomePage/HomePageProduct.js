@@ -20,14 +20,18 @@ const HomePageProduct = ({product , cart , setCart}) => {
         }
     }
     return (
+        
         <div className='container'>
-            <img src={product.image} />
+            <div className="ImageContainer">
+                <img src={product.image} />
+            </div>
             <h4>{product.name}</h4>
-            <hr></hr>
-            <div>
-                <a href={`/products/${product._id}`}>View</a>
-                <a onClick={addCartItem}>Add to Cart</a>
-                <h3>{product.price}$</h3>
+            <div className="ProductCartFooter">
+                <div className="ProductCartButtons">
+                    <a className="view" href={`/products/${product._id}`}>View</a>
+                    <a className="add" onClick={addCartItem}>Add to Cart</a>
+                </div>
+                <h3>{product.price}LE</h3>
             </div>
         </div>
     ) ;

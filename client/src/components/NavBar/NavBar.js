@@ -1,15 +1,15 @@
 import './NavBarStyle.css'
 const NavBar = () => {
   return (
-
     <div className="topnav">
-        <a className="active" href="/">E-commerce</a>
-        <a href="/cart">Cart</a>
-        <form action="action_page.php">
-            <input type="text" placeholder="Search.." name="search" />
-            <button type="submit"><i className="fa fa-search"></i></button>
-        </form>
+        <a  className="name" href="/">E-commerce</a>
+        <div  className='Form'>
+            <input  type="text" placeholder="Search.." name="search" />
+            <button  ><i className="fa fa-search"></i></button>
+        </div>
+        <a  href="/cart"><i className="fa fa-shopping-cart"></i></a>
     </div>
+    
   )
 }
 
