@@ -1,4 +1,5 @@
 import useFetch from "../../useFetch";
+import Loading from "../Loading/Loading";
 
 const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice}) => {
 
@@ -8,7 +9,7 @@ const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice}) => 
     return ( 
     <div className="product2">
         {error && <div> {error} </div>} 
-        {isPending && <div> loading... </div>}
+        {isPending && <Loading />}
         {product && <>
         
                 <img src={product.image}/>
