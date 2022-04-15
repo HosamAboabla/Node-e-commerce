@@ -1,5 +1,6 @@
 import HomePageProduct from "./HomePageProduct";
 import useFetch from "../../useFetch";
+import Loading from "../Loading/Loading";
 
 import "./HomePageStyle.css";
 
@@ -10,7 +11,7 @@ const HomePage = ({cart , setCart }) => {
     return (
         <div>
             {error && <div> {error} </div>} 
-            {isPending && <div> loading... </div>}
+            {isPending && <Loading/>}
             {products && products.map(product => <HomePageProduct key={product._id} product={product} cart = {cart} setCart={setCart}/>)}
         </div>  
     )
