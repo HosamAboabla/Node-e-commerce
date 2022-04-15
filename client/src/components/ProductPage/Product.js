@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../../useFetch";
+import Loading from "../Loading/Loading";
 import ProductView from "./ProductView";
 
 const Product = () => {
@@ -9,7 +10,7 @@ const Product = () => {
     return ( 
         <div>
             {error && <div> {error} </div>} 
-            {isPending && <div> loading... </div>}
+            {isPending && <Loading/>}
             {product && < ProductView product={product}/> }
         </div>);
 }
