@@ -3,15 +3,15 @@ import useFetch from "../../useFetch";
 
 import "./HomePageStyle.css";
 
-const HomePage = () => {
-    const link = 'http://localhost:5000/api/products/list/'  ;
+const HomePage = ({cart , setCart }) => {
+    const link = '/api/products/list/'  ;
     const {data : products , error , isPending} = useFetch(link);
     console.log("products" , products);
     return (
         <div>
             {error && <div> {error} </div>} 
             {isPending && <div> loading... </div>}
-            {products && products.map(product => <HomePageProduct product={product}/>)}
+            {products && products.map(product => <HomePageProduct key={product._id} product={product} cart = {cart} setCart={setCart}/>)}
         </div>  
     )
 }
