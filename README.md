@@ -1,13 +1,12 @@
 # Node-e-commerce
 
-## Team members:
-    - Hosam Sayed Ahmed Aboabla
-    - Galal Nasser Mohamed Elfeky
-    - Mohammed Essam Mohammed Abu El-Nasr
-    - Ahmed Fayez Basiony Hussien
-    - Adel ma'mon elwan
-    - Abdallah Alaa Ali Salem
+## Live Demo: https://hosamaboabla-mern-e-commerce.herokuapp.com/
 
+
+
+## Cloning repo
+    $ git clone https://github.com/HosamAboabla/Node-e-commerce.git
+    $ cd Node-e-commerce
 
 ## Installing dependencies
     $ npm install
@@ -17,4 +16,12 @@
 ## Running command
     $ npm run start
 
-# http://localhost:5000/
+## http://localhost:5000/
+
+## Our lovely team members:
+    - Hosam Sayed Ahmed Aboabla
+    - Galal Nasser Mohamed Elfeky
+    - Mohammed Essam Mohammed Abu El-Nasr
+    - Ahmed Fayez Basiony Hussien
+    - Adel ma'mon elwan
+    - Abdallah Alaa Ali Salem
