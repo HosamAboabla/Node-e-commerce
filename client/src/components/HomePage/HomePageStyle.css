@@ -2,36 +2,64 @@
     margin:0;
     padding:0;
   }
+
+.all{
+  background-color: #F2F2F2;
+  width:100%;
+  min-height: 109vh;
+  height: 200%;
+  background-attachment: fixed;
+  margin:0px;
+}
+
+.HomeGrid{
+  background-color: #F2F2F2;
+  width:1100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin : 0 auto ;
+}
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 55px;
-    border: 2px solid #ccc;
-    float: left;
-    height: 290px;
-    width: 260px;
-    background-color: #ddd;
-    border-radius: 2px;
+    align-items: center;
+    height: 330px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin:20px 0 ;
 
   }
+
+.ImageContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:300px;
+  height:150px;
+  
+}
   
 .container img {
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     border-radius: 2px;
-    max-width: 230px;
-    max-height: 150px; 
-    height : auto ;
+    max-width: 250px;
+    max-height: 135px; 
+    height : auto;
     width: auto;
   }
   
 .container h4 {
-    padding-left: 8px;
+    margin-top: 45px;
+    margin-bottom: 10px;
     width : 230px ;
-    height : 30px;
+    height : 33px;
+    font-size: 28px;
     overflow-y:hidden;
     overflow-x: hidden;
   }
@@ -39,26 +67,50 @@
 .container h3 {
     padding: 4px 6px;
     float: right;
-    font-size: 20px;;
+    font-size: 20px;
+    color: black;
+    font-style: bold ;
   }
   
-.container a {
-    padding: 4px 6px;
-    background: white;
-    border: 1px solid #04aa6d;
-    color: black;
+.container .ProductCartButtons .add {
+    padding: 6px 10px;
+    background: #4FBF30;
+    border: 1px solid white;
+    color: white;
     font-size: 15px;
     cursor: pointer;
     transition-duration: 0.4s;
     display: inline-block;
-    /* border-radius: 4px; */
-    transition-duration: 0.4s;
+    border-radius: 4px;
     text-decoration: none;
     margin:2px;
   }
-.container a:hover {
-    background: #04aa6d;
+
+.container .ProductCartButtons .view {
+    padding: 6px 10px;
+    background: #448FF2;
+    border: 1px solid white;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    display: inline-block;
+    border-radius: 4px;
+    text-decoration: none;
+    margin:2px;
   }
+
+  .container .ProductCartButtons .add:hover {
+    background-color: #44A629;
+    color: white;
+  }
+
+  .container .ProductCartButtons .view:hover {
+    background-color: #056CF2;
+    color: white;
+  }
+
+  /*
   
 .products {
     list-style: none;
@@ -68,21 +120,27 @@
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     grid-gap: 3em;
   }
-  
-  /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
-    
-  @media screen and (max-width: 600px) {
-      .topnav a,
-      .topnav form {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        padding: 14px;
-      }
-      .topnav form {
-        border: 1px solid #ccc;
-      }
- }*/
-  
+*/
+  .ProductCartFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #ccc;
+    position:absolute;
+    bottom: 10px;
+    width: 250px;
+    margin:10px 20px;
+  }
+
+@media only screen and (max-width: 1050px) {
+  .HomeGrid{
+    width:850px;
+  }
+}
+
+@media only screen and (max-width:800px) {
+  .HomeGrid{
+    width:400px;
+  }
+}

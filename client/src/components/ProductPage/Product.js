@@ -8,11 +8,12 @@ const Product = () => {
     const link = `/api/products/list/${id}`;
     const {data:product , error , isPending} = useFetch(link);
     return ( 
-        <div>
+        <div className="productpage">
             {error && <div> {error} </div>} 
             {isPending && <Loading/>}
             {product && < ProductView product={product}/> }
-        </div>);
+        </div>
+        );
 }
 
 export default Product;
