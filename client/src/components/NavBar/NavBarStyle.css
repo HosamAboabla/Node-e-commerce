@@ -4,17 +4,16 @@
     height: 70px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .topnav .name {
     color:white;
     font-size: 20px;
     font-style: bold;
     width:180px;
-    min-width: 170px;
     text-decoration: none;
     padding-left: 60px;
-    font-weight: bold;
+    font-weight:600;
   }
 .topnav .name:hover {
     color: #f2f2f2 ;
@@ -35,7 +34,7 @@
     left:20px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
   }
   
@@ -93,22 +92,55 @@
     .topnav .name{
       font-size:18px;
       padding-left: 20px;
-      max-width: 100px;
+      width: 92px;
     }
     .topnav .fa-shopping-cart{
       font-size: 20px;
-      padding-right: 25px;
-      width:90px;
-      padding-left:45px;
+      padding-right: 20px;
+      width:92px;
+      padding-left:52px;
       
     }
     .topnav .Form{
-      left:-20px;
-      width:210px;
+      left:40px;
+      width:340px;
     }
     .topnav input[type="text"]{
-      width:170px;
+      width:300px;
     }
 
+    
+  }
+  @media only screen and (max-width: 530px) {
+    .topnav .name{
+      font-size:15px;
+      padding-left: 10px;
+      width: 70px;
+    }
+    .topnav .fa-shopping-cart{
+      font-size: 20px;
+      padding-right: 10px;
+      width:70px;
+      padding-left:40px;
+      
+    }
+    .topnav .Form{
+      height:30px;
+      left:30px;
+      width:220px;
+    }
+    .topnav input[type="text"]{
+      width:180px;
+      height :30px;
+      border-radius:30px ;
+      font-size: 13px;
+    }
+    .topnav button {
+      left:-30px;
+      height:30px;
+      border-radius: 15px;
+      width: 30px;
+      font-size: 13px;
+    }
     
   }
