@@ -26,7 +26,7 @@ const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice , car
                     <button className="plus quan">+</button>
                     <span className="product2-quantity">{quantity}</span>
                     <button className="minus quan">-</button>
-                    <p className="product2-remove">
+                    <p onClick={removeCartItem} className="product2-remove">
                         <i className="fa fa-trash" aria-hidden="true"></i>
                         <span className="remove">Remove</span>
                     </p>
