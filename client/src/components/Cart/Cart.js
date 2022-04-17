@@ -14,7 +14,7 @@ const Cart = ({cart , setCart}) => {
                 {
                     cart.map( item =>  (
                         totalQuantity += item.quantity,                  
-                        <ProductInCart key={item.product_id} product_id = {item.product_id} quantity = {item.quantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice} />
+                        <ProductInCart key={item.product_id} product_id = {item.product_id} quantity = {item.quantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice} cart={cart} setCart={setCart} />
                     ))
                 }
             </div>
