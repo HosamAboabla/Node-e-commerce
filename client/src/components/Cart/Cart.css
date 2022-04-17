@@ -43,14 +43,14 @@
 
 }
 
-.imgContainerCart{
-	width:250px;
-	height:200px;
-	margin-right: 25px;
+.imgContainerCart {
+    display: flex;
+    height: 200px;
+    min-width: 225px;
+	align-items: center;
+	justify-content: center;
 }
 .product2 .imgContainerCart img{
-	margin:25px auto;
-	margin-left:25px;
 	max-width: 200px;
 	max-height: 150px;
 	width:auto;

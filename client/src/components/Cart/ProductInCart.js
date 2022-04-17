@@ -23,9 +23,9 @@ const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice , car
                 <div className="product2-info">
                     <h3 className="product2-name">{product.name}</h3>
                     <h4 className="product2-price">{product.price} LE</h4>
-                    <button className="plus quan">+</button>
-                    <span className="product2-quantity">{quantity}</span>
                     <button className="minus quan">-</button>
+                    <span className="product2-quantity">{quantity}</span>
+                    <button className="plus quan">+</button>
                     <p onClick={removeCartItem} className="product2-remove">
                         <i className="fa fa-trash" aria-hidden="true"></i>
                         <span className="remove">Remove</span>
