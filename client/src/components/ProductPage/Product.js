@@ -3,7 +3,9 @@ import useFetch from "../../useFetch";
 import Loading from "../Loading/Loading";
 import ProductView from "./ProductView";
 
-const Product = () => {
+const Product = ({cart , setCart }) => {
+
+
     const {id} = useParams();
     const link = `/api/products/list/${id}`;
     const {data:product , error , isPending} = useFetch(link);
@@ -11,7 +13,7 @@ const Product = () => {
         <div className="productpage">
             {error && <div> {error} </div>} 
             {isPending && <Loading/>}
-            {product && < ProductView product={product}/> }
+            {product && < ProductView product={product} cart = {cart} setCart = {setCart}/> }
         </div>
         );
 }

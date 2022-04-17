@@ -37,7 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage cart = {cart} setCart = {setCart} />}/>
         <Route path="/products" element={<HomePage cart = {cart} setCart = {setCart} />}/>
-        <Route path="/products/:id" element={<Product/>}/>
+        <Route path="/products/:id" element={<Product cart = {cart} setCart = {setCart}/>}/>
         <Route path="/cart" element={<Cart cart = {cart} setCart = {setCart} />}/> 
         <Route path="/*" element={<><h2>ERROR 404 not found</h2></>}/>
       </Routes>
