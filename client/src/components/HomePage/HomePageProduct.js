@@ -13,7 +13,7 @@ const HomePageProduct = ({product , cart , setCart}) => {
         })
         if(exists == false)
         {
-            setCart([...cart , {product_id : product._id , quantity : 1}]);
+            setCart([...cart , {product_id : product._id , quantity : 1,price : product.price}]);
         }
         else{
             setCart([...cart]);
