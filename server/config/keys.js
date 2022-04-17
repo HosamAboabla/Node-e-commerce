@@ -9,10 +9,11 @@ module.exports = {
     database: {
       url: process.env.MONGO_URI
     },
-    /* jwt: {
+    jwt: {
       secret: process.env.JWT_SECRET,
       tokenLife: '7d'
     },
+    /* 
     mailchimp: {
       key: process.env.MAILCHIMP_KEY,
       listKey: process.env.MAILCHIMP_LIST_KEY
