@@ -2,7 +2,7 @@ import { useState } from "react";
 import useFetch from "../../useFetch";
 import Loading from "../Loading/Loading";
 
-const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice , cart , setCart}) => {
+const ProductInCart = ({product_id , quantity ,price , cart , setCart}) => {
 
     const link = `/api/products/list/${product_id}`;
     const {data:product , error , isPending} = useFetch(link);
@@ -49,14 +49,18 @@ const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice , car
                 </div>
                 <div className="product2-info">
                     <h3 className="product2-name">{product.name}</h3>
-                    <h4 className="product2-price">{product.price} LE</h4>
+                    <h4 className="product2-price">{product.price} LE  </h4>
+                    
                     <button onClick={minusOne} className="minus quan">-</button>
-                    <span className="product2-quantity">{quan }</span>
+                    <span className="product2-quantity">{quan}</span>
                     <button onClick={plusOne} className="plus quan">+</button>
+                    <span className="totalProductInCart">{price*quan} LE</span>
                     <p onClick={removeCartItem} className="product2-remove">
                         <i className="fa fa-trash" aria-hidden="true"></i>
                         <span className="remove">Remove</span>
                     </p>
+                    
+
                 </div>
             </>
         }
