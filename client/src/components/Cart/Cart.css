@@ -59,7 +59,13 @@
 	object-fit: cover;
 
 }
-
+.totalProduct{
+	color:#448FF2;
+}
+.totalProductInCart{
+	color:#448FF2;
+	font-size: 16px;
+}
 
 .product2-info{
 
@@ -94,8 +100,8 @@
 }
 .plus {
     background-color: white;
-    color: #448ff2;
-    border: 1px solid #448ff2;
+    color: #4fbf30;
+    border: 1px solid #4fbf30;
 }
 .minus{
 	background-color: white;

@@ -4,7 +4,7 @@ import React , {useState , useEffect } from 'react'
 
 const Cart = ({cart , setCart}) => {
     let totalQuantity = 0;
-    const [totalPrice , setTotalPrice] = useState(0);
+    let totalPrice = 0 ; 
     console.log('stored cart' , cart);
     
     return ( 
@@ -14,15 +14,15 @@ const Cart = ({cart , setCart}) => {
                 <div className="productsincart">
                     {
                         cart.map( item =>  (
-                            totalQuantity += item.quantity,                  
-                            <ProductInCart key={item.product_id} product_id = {item.product_id} quantity = {item.quantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice} cart={cart} setCart={setCart} />
+                            totalQuantity += item.quantity, totalPrice+= (item.quantity) * (item.price) ,                  
+                            <ProductInCart key={item.product_id} product_id = {item.product_id} quantity = {item.quantity} price={item.price}  cart={cart} setCart={setCart} />
                         ))
                     }
                 </div>
                 <div className="cart-total">
                     <p>
-                        <span>Total Price</span>
-                        <span>{totalPrice}</span>
+                        <span >Total Price</span>
+                        <span className="totalProduct">{totalPrice} LE</span>
                     </p>
                     <p>
                         <span>Number of Items</span>
