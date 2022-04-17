@@ -1,60 +1,114 @@
 .topnav {
-    background-color: #333;
+    background-color: #448FF2;
     overflow: hidden;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
+  .topnav .name {
+    color:white;
+    font-size: 20px;
+    font-style: bold;
+    width:180px;
+    min-width: 170px;
     text-decoration: none;
-    font-size: 17px;
+    padding-left: 60px;
+    font-weight: bold;
   }
+.topnav .name:hover {
+    color: #f2f2f2 ;
+  }
+
   
   /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
+  
   
   /* Add a color to the active/current link */
-  .topnav a.active {
-    background-color: #04aa6d;
-    color: white;
-  }
+  
   
   /* Style the search box inside the navigation bar */
-  .topnav form {
-    float: right;
+  .topnav .Form {
     border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
+    width:400px;
+    position: relative;
+    left:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
   }
   
   .topnav input[type="text"] {
     font-size: 17px;
-    padding: 5px;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
+    padding: 15px;
+    width: 360px;
+    float:left;
+    background: white;
+    border:none;
+    outline: none;
+    border-radius:20px;
+    height:40px;
   }
   
   .topnav button {
-    float: left;
-    padding: 7px;
-    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;
+    left:-40px;
+    height:40px;
+    border-radius: 20px;
+    width: 40px;
     border: none;
-    background: #333;
-    color: white;
+    background-color: white;;
+    color: #448FF2;
     font-size: 17px;
     cursor: pointer;
   }
   
   .topnav button:hover {
-    background: #ddd;
+    background: #f2f2f2;
   }
   
+  /* Style the links inside the navigation bar */
+
+  .topnav .fa-shopping-cart {
+    float: left;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    width:180px;
+    padding-right: 60px;
+    padding-left: 90px;
+  }
+  .topnav .fa-shopping-cart:hover {
+    color: #f2f2f2;
   
+  }
+
+    
+
+  @media only screen and (max-width: 800px) {
+    .topnav .name{
+      font-size:18px;
+      padding-left: 20px;
+      max-width: 100px;
+    }
+    .topnav .fa-shopping-cart{
+      font-size: 20px;
+      padding-right: 25px;
+      width:90px;
+      padding-left:45px;
+      
+    }
+    .topnav .Form{
+      left:-20px;
+      width:210px;
+    }
+    .topnav input[type="text"]{
+      width:170px;
+    }
+
+    
+  }

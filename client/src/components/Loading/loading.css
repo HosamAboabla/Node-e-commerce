@@ -1,0 +1,104 @@
+.loadingDiv{
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+}
+.square {
+    margin-left:auto;
+    margin-right: auto;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    width: 100px;
+    height: 100px;    
+}
+.c1{
+    position: absolute;
+    right:0px;
+    bottom:50px ;
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background-color: #448FF2;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.c2{
+    position: absolute;
+    right:14.65px;
+    bottom:85.35px ;
+    width:11px;
+    height:11px;
+    border-radius: 50%;
+    background-color: #448FF2;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.c3{
+    position: absolute;
+    right:50px;
+    bottom:100px ;
+    width:10px;
+    height:10px;
+    border-radius: 50%;
+    background-color:#448FF2;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.c4{
+    position: absolute;
+    right:85.35px;
+    bottom:85.35px ;
+    width:9px;
+    height:9px;
+    border-radius: 50%;
+    background-color:#448FF2;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.c5{
+    position: absolute;
+    right:100px;
+    bottom:50px ;
+    width:8px;
+    height:8px;
+    border-radius: 50%;
+    background-color:#448FF2;
+    animation-name: loading;
+    animation-duration: 0s;
+    animation-iteration-count: infinite;
+}
+.c6{
+    position: absolute;
+    right:85.35px;
+    bottom:14.65px ;
+    width:7px;
+    height:7px;
+    border-radius: 50%;
+    background-color:#448FF2;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.c7{
+    position: absolute;
+    right:50px;
+    bottom:0;
+    width:6px;
+    height:6px;
+    border-radius: 50%;
+    background-color:#448FF2;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes loading {
+    0% { transform:rotate(0deg);}
+    100% {transform:rotate(360deg);} 
+}
+
