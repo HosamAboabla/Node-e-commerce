@@ -13,17 +13,21 @@ const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice , car
 
     
     return ( 
-    <div className="product2">
+    
+        <div className="product2">
         {error && <div> {error} </div>} 
         {isPending && <Loading />}
         {product && <>
-        
-                <img src={product.image}/>
+                <div className="imgContainerCart">
+                    <img src={product.image}/>
+                </div>
                 <div className="product2-info">
                     <h3 className="product2-name">{product.name}</h3>
-                    <h4 className="product2-price">{product.price}</h4>
-                    <span className="product2-quantity">Quantity: </span>{quantity}
-                    <p onClick={removeCartItem} className="product2-remove">
+                    <h4 className="product2-price">{product.price} LE</h4>
+                    <button className="plus quan">+</button>
+                    <span className="product2-quantity">{quantity}</span>
+                    <button className="minus quan">-</button>
+                    <p className="product2-remove">
                         <i className="fa fa-trash" aria-hidden="true"></i>
                         <span className="remove">Remove</span>
                     </p>
