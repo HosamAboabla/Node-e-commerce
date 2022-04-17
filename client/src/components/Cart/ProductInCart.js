@@ -8,7 +8,6 @@ const ProductInCart = ({product_id , quantity , totalPrice , setTotalPrice , car
 
     const removeCartItem = () => {
         setCart(cart.filter(item => item.product_id !== product_id));
-       
     }
 
     
