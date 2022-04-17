@@ -70,7 +70,26 @@
   }
   
   /* Style the links inside the navigation bar */
-
+  .cartIcon{
+    position: relative;
+    width: 180px;
+  }
+  .cartIcon span {
+    background-color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 55px;
+    top: -10px;
+    display: flex;
+    border: 1px solid #448ff2;
+    align-items: center;
+    color: #448ff2;
+    justify-content: center;
+    font-weight: 900;
+}
   .topnav .fa-shopping-cart {
     float: left;
     color: white;
@@ -85,6 +104,7 @@
     color: #f2f2f2;
   
   }
+
 
     
 
