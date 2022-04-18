@@ -33,7 +33,7 @@ function App() {
   return (
     
     <div className="App">
-      <NavBar/>
+      <NavBar cart = {cart}/>
       <Routes>
         <Route path="/" element={<HomePage cart = {cart} setCart = {setCart} />}/>
         <Route path="/products" element={<HomePage cart = {cart} setCart = {setCart} />}/>
