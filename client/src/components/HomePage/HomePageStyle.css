@@ -4,6 +4,8 @@
   }
 
 .all{
+  position: relative;
+	top:55px;
   background-color: #F2F2F2;
   width:100%;
   min-height: 109vh;
@@ -145,7 +147,7 @@
   }
 }
 
-.fa-check{
+.addedHome{
   position: absolute;
   right : 75px;
   top : 55px;

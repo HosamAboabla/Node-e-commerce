@@ -18,8 +18,8 @@ const HomePageProduct = ({product , cart , setCart}) => {
         else{
             setCart([...cart]);
         }
-        document.getElementById(`addedHome${product._id}`).className = 'fa fa-check addedAnimation' ; 
-        setTimeout(()=>{document.getElementById(`addedHome${product._id}`).className = 'fa fa-check' ; },1000)
+        document.getElementById(`addedHome${product._id}`).className = 'fa fa-check addedAnimation addedHome' ; 
+        setTimeout(()=>{document.getElementById(`addedHome${product._id}`).className = 'fa fa-check addedHome' ; },1000)
     }
     return (
         
@@ -35,7 +35,7 @@ const HomePageProduct = ({product , cart , setCart}) => {
                 </div>
                 <h3>{product.price}LE</h3>
             </div>
-            <i id ={`addedHome${product._id}`}class="fa fa-check" aria-hidden="true"></i>
+            <i id ={`addedHome${product._id}`}className="fa fa-check addedHome" aria-hidden="true"></i>
         </div>
     ) ;
 }

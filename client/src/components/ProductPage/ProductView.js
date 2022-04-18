@@ -18,6 +18,8 @@ const ProductView = ({product , cart , setCart}) => {
         else{
             setCart([...cart]);
         }
+        document.getElementById(`addedProductPage${product._id}`).className = 'fa fa-check addedAnimation addedInProductPage' ; 
+        setTimeout(()=>{document.getElementById(`addedProductPage${product._id}`).className = 'fa fa-check addedInProductPage' ; },1000)
     }
 
     return ( 
@@ -35,6 +37,7 @@ const ProductView = ({product , cart , setCart}) => {
                     <p>{product.description}</p>
                 </div>
             </div> 
+            <i id ={`addedProductPage${product._id}`}className="fa fa-check addedInProductPage" aria-hidden="true"></i>
         </div>
     );
 }
