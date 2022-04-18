@@ -27,6 +27,7 @@ const ProductInCart = ({product_id , quantity ,price , cart , setCart}) => {
             if(item.product_id == product_id)
             {
                 item.quantity -=1   ;
+                setCart([...cart]);
                 if (item.quantity == 0) 
                 {   
                     setCart(cart.filter(item => item.product_id !== product_id));
@@ -49,7 +50,7 @@ const ProductInCart = ({product_id , quantity ,price , cart , setCart}) => {
                 </div>
                 <div className="product2-info">
                     <h3 className="product2-name">{product.name}</h3>
-                    <h4 className="product2-price">{product.price} LE  </h4>
+                    <h4 className="product2-price">{product.price} LE</h4>
                     
                     <button onClick={minusOne} className="minus quan">-</button>
                     <span className="product2-quantity">{quan}</span>
