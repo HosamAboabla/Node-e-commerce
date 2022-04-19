@@ -6,6 +6,8 @@
 
 }
 .cartAll{
+	position: relative;
+	top:55px;
 	background-color: #f2f2f2;
 	width:100%;
 	min-height: 100vh;
@@ -211,19 +213,20 @@
 
 	}
 
-	.product > img{
-
-		height: 150px;
-
-		width: 200px;
-
-	}
-
 	.product-name, .product-price, .product-offer{
 
 		margin-bottom: 10px;
 
 	}
+	.imgContainerCart {
+		max-width: 100px;
+		min-width: 100px;
+	}
+
+	.product2 .imgContainerCart img {
+		max-width: 95px;
+	}
+
 
 }
 
@@ -245,6 +248,15 @@
 
 }
 
+@media screen and (max-width: 1220px){
+
+	.container{
+
+		max-width: 95%;
+
+	}
+
+}
 @media screen and (max-width: 1220px){
 
 	.container{

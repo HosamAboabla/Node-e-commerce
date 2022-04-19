@@ -1,10 +1,15 @@
 .topnav {
+    position: fixed;
+    top:0px;
+    z-index: 1;
+    width:100%;
     background-color: #448FF2;
     overflow: hidden;
-    height: 70px;
+    height: 55px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
   }
   .topnav .name {
     color:white;
@@ -128,6 +133,14 @@
     .topnav input[type="text"]{
       width:300px;
     }
+    .cartIcon{
+      position: relative;
+      width:92px;
+    }
+    .cartIcon span {
+      right: 14px;
+      top: -12px;
+  }
 
     
   }
@@ -162,5 +175,13 @@
       width: 30px;
       font-size: 13px;
     }
+    .cartIcon{
+      position: relative;
+      width:70px;
+    }
+    .cartIcon span {
+      right: 3px;
+      top: -12px;
+  }
     
   }
