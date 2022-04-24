@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
-
+const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 // get all users
-router.get('/list' , async (request , responce) => {
+router.get('/list',verifyAndAdmin , async (request , responce) => {
     try{
         const userList = await Users.find();
         responce.status(200).json(userList);
@@ -15,7 +15,7 @@ router.get('/list' , async (request , responce) => {
 })
 
 // get user with id 
-router.get('/list/:id' , async (request,responce) => {
+router.get('/list/:id',verifyAndAuthorization , async (request,responce) => {
     try{
         const user = await Users.findById(request.params.id);
         responce.status(200).json(user);
@@ -25,27 +25,27 @@ router.get('/list/:id' , async (request,responce) => {
     }
 })
 
-router.post('/create' , async(request,responce) => {
-    try{
-        const item = {
-            email: request.body.email,
-            firstName: request.body.firstName,
-            lastName : request.body.lastName,
-            PhoneNumber: request.body.PhoneNumber,
-            isAdmin : request.body.isAdmin,
-            password : request.body.password,
-        }
-        const newUser = new Users(item);
-        await newUser.save()
-        responce.status(201).send(`new user was created: ${newUser}`)
-    } catch(err) {
-        responce.status(500).json({Message: 'There was an ERROR creating the user',Error: err})
-    }
+// router.post('/create' , async(request,responce) => {
+//     try{
+//         const item = {
+//             email: request.body.email,
+//             firstName: request.body.firstName,
+//             lastName : request.body.lastName,
+//             PhoneNumber: request.body.PhoneNumber,
+//             isAdmin : request.body.isAdmin,
+//             password : request.body.password,
+//         }
+//         const newUser = new Users(item);
+//         await newUser.save()
+//         responce.status(201).send(`new user was created: ${newUser}`)
+//     } catch(err) {
+//         responce.status(500).json({Message: 'There was an ERROR creating the user',Error: err})
+//     }
 
-})
+// })
 
 
-router.put('/update/:id' , async (request,responce) => {
+router.put('/update/:id',verifyAndAuthorization , async (request,responce) => {
     try{
         const updated = await Users.updateOne(
             {_id : request.params.id},
@@ -56,14 +56,13 @@ router.put('/update/:id' , async (request,responce) => {
                 PhoneNumber: request.body.PhoneNumber,
                 isAdmin : request.body.isAdmin,
                 password : request.body.password,}});
-        await updated.save()
         responce.status(201).json(updated)
     }catch(err){
         responce.status(500).json({Message:`There was an ERROR Updating the user data with ID : ${request.params.id}`,Error:err});
     }
 })
 
-router.delete('/delete/:id', async (request,responce) => {
+router.delete('/delete/:id',verifyAndAuthorization, async (request,responce) => {
     try{
         const removed = await Users.deleteOne({_id : request.params.id});
         responce.status(200).json(removed);

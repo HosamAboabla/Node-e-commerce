@@ -7,11 +7,12 @@ const CartRoutes = require('./cartAPI')
 const OrderRoutes = require('./orderAPI')
 const auth = require('./auth')
 
+router.use('/auth', auth)
 router.use('/orders' , OrderRoutes);
 router.use('/carts' , CartRoutes);
 router.use('/products' , productRoutes);
 router.use('/users' , userRoutes);
-router.use('/' , auth);
+// router.use('/' , auth);
 
 
 module.exports = router;

@@ -1,12 +1,11 @@
 const express = require('express');
-
 const router = express.Router();
-
 const Cart = require('../../models/cart.js');
+const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 
 // get cart with user id 
-router.get('/user/:userid' , async (request , responce) => {
+router.get('/user/:userid',verifyAndAuthorization, async (request , responce) => {
     try{
         const userCart = await  Cart.find().where('user').equals(request.body.userid);
         responce.status(200).json(userCart);
@@ -18,7 +17,7 @@ router.get('/user/:userid' , async (request , responce) => {
 })
 
 // get cart with cart id 
-router.get('/:id' , async (request , responce) => {
+router.get('/:id' ,verifyAndAdmin, async (request , responce) => {
     try{
         const userCart = await  Cart.findById(request.body.id);
         responce.status(200).json(userCart);
@@ -29,7 +28,7 @@ router.get('/:id' , async (request , responce) => {
 
 })
 
-router.post('/create' , async(request,responce) => {
+router.post('/create',verifyAndAdmin , async(request,responce) => {
     try{
         const newCart = new Cart({user : request.body.user});
         await newCart.save()

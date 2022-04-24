@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/HosamAboabla/Node-e-commerce#readme",
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
