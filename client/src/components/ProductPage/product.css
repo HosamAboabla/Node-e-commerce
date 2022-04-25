@@ -4,6 +4,8 @@
     font-family: 'Cairo', sans-serif;}
 
 .productpage{
+    position: relative;
+	top:55px;
     background-color:#F2F2F2 ;
     width: 100%;
     height:110vh;
@@ -11,6 +13,7 @@
     background-attachment: fixed;
 }
 .product{
+    position: relative;
     background-color: white;
     height: 100%;
     min-height:100vh;
@@ -23,9 +26,12 @@
     margin-right: auto;
 }
 
+
 .image{
     margin-top: 50px ;
     width: 250px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .details{
@@ -73,7 +79,17 @@
 .details .price{
     font-size: 1.3em;
 }
-
+.addedInProductPage{
+    position: absolute;
+    font-size: 180px;
+    left:240px;
+    top:100px;
+    color :#4FBF30 ;
+    border: 5px solid #4FBF30 ;
+    border-radius: 50%;
+    opacity: 0;
+    display: none;
+}
 @media only screen and (max-width:600px) {
     .product{
         flex-direction: column;
@@ -89,5 +105,10 @@
     .product .details{
         margin:0px;
         margin-top: 40px;
+    }
+    .addedInProductPage {
+        font-size: 180px;
+        left: 85px;
+        top: 180px;
     }
 }

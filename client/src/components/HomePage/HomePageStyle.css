@@ -4,6 +4,8 @@
   }
 
 .all{
+  position: relative;
+	top:55px;
   background-color: #F2F2F2;
   width:100%;
   min-height: 109vh;
@@ -143,4 +145,29 @@
   .HomeGrid{
     width:400px;
   }
+}
+
+.addedHome{
+  position: absolute;
+  right : 75px;
+  top : 55px;
+  color :#4FBF30 ;
+  font-size: 140px;
+  border: 5px solid #4FBF30 ;
+  border-radius: 50%;
+  opacity: 0;
+  display: none;
+  
+}
+.addedAnimation{
+  display: block;
+  animation-name: addedToCart;
+  animation-duration: 1s;
+  
+}
+@keyframes addedToCart {
+0% { opacity: 0;}
+25% {opacity:1;} 
+75% {opacity:1;} 
+100% {opacity:0;} 
 }

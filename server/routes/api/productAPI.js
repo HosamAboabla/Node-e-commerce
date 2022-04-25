@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const Products = require('../../models/product.js');
-
+const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 
 router.get("/list", async (request,responce) => {
@@ -24,7 +23,7 @@ router.get('/list/:id' , async (request,responce) => {
     }
 })
 
-router.post("/create" , async (request,responce) => {
+router.post("/create",verifyAndAdmin , async (request,responce) => {
     try{
         const newProduct = new Products(
         {   name: request.body.name,
@@ -43,7 +42,7 @@ router.post("/create" , async (request,responce) => {
 })
 
 
-router.put('/update/:id' , async (request,responce) => {
+router.put('/update/:id',verifyAndAdmin , async (request,responce) => {
     try{
         const updated = await Products.updateOne(
             {_id : request.params.id},
@@ -61,7 +60,7 @@ router.put('/update/:id' , async (request,responce) => {
     }
 })
 
-router.delete('/delete/:id', async (request,responce) => {
+router.delete('/delete/:id',verifyAndAdmin, async (request,responce) => {
     try{
         const removed = await Products.deleteOne({_id : request.params.id});
         responce.status(200).json(removed);

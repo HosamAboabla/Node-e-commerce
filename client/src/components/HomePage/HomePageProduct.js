@@ -13,11 +13,13 @@ const HomePageProduct = ({product , cart , setCart}) => {
         })
         if(exists == false)
         {
-            setCart([...cart , {product_id : product._id , quantity : 1}]);
+            setCart([...cart , {product_id : product._id , quantity : 1,price : product.price}]);
         }
         else{
             setCart([...cart]);
         }
+        document.getElementById(`addedHome${product._id}`).className = 'fa fa-check addedAnimation addedHome' ; 
+        setTimeout(()=>{document.getElementById(`addedHome${product._id}`).className = 'fa fa-check addedHome' ; },1000)
     }
     return (
         
@@ -33,6 +35,7 @@ const HomePageProduct = ({product , cart , setCart}) => {
                 </div>
                 <h3>{product.price}LE</h3>
             </div>
+            <i id ={`addedHome${product._id}`}className="fa fa-check addedHome" aria-hidden="true"></i>
         </div>
     ) ;
 }

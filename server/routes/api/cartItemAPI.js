@@ -4,6 +4,7 @@ const router = express.Router();
 const Products = require('../../models/product.js');
 
 
+<<<<<<< HEAD
 
 router.get("/list", async (request, responce) => {
     try {
@@ -75,4 +76,6 @@ router.delete('/delete/:id', async (request, responce) => {
 })
 
 
+=======
+>>>>>>> 2c9f67cf21f61c0d6bcb492fc191255d9b47328a
 module.exports = router
