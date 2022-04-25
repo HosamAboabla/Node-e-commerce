@@ -5,7 +5,12 @@ const Schema = mongoose.Schema;
 const { isEmail } = require('validator');
 
 const userSchema = new Schema(
-    {
+    {   
+        userName: {
+            type:String,
+            required: [true,'Please enter the user name'],
+            unique: true,
+        },
         email: {
             type: String,
             required: [true, 'Please enter an email'],
@@ -15,11 +20,11 @@ const userSchema = new Schema(
         },
         firstName: {
             type: String,
-            requied: true
+            requied: [true,'Please enter the first name']
         },
         lastName: {
             type: String,
-            requied: true
+            requied: [true,"Please enter the last name"]
         },
         phoneNumber: {
             type: String,
@@ -39,4 +44,4 @@ const userSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('User', userSchema);
