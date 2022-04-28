@@ -1,4 +1,3 @@
-const { request } = require('express');
 const express = require('express');
 const router = express.Router();
 const User = require('../../models/user.js');
@@ -6,7 +5,7 @@ const { verify, verifyAndAuthorization, verifyAndAdmin } = require('../verifyTok
 
 router.get('/address/:id', verifyAndAuthorization, async (req, res) => {
     try {
-        const userAddress = await User.findById(request.params.id).address;
+        const userAddress = await User.findById(req.params.id).address;
         res.status(200).json(userAddress);
     }
     catch (err) {
@@ -17,9 +16,9 @@ router.get('/address/:id', verifyAndAuthorization, async (req, res) => {
 router.post('/create', async (req, res) => {
     try {
         const newAddress = new User.address = ({
-            address: request.body.address,
-            city: request.body.city,
-            country: request.body.country,
+            address: req.body.address,
+            city: req.body.city,
+            country: req.body.country,
         });
         await newAddress.save()
         res.status(201).json.apply(newAddress)
@@ -31,7 +30,7 @@ router.post('/create', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     try {
         const removed = await User.updateOne(
-            { _id: request.params.id },
+            { _id: req.params.id },
             {
                 $set: {
                     address: null
@@ -46,14 +45,14 @@ router.delete('/delete/:id', async (req, res) => {
 
 router.put('/update', async (req, res) => {
     try {
-        const updated = await user.updateOne(
-            { _id: request.params.id },
+        const updated = await User.updateOne(
+            { _id: req.params.id },
             {
                 $set: {
                     address: {
-                        address: request.body.address,
-                        city: request.body.city,
-                        country: request.body.country,
+                        address: req.body.address,
+                        city: req.body.city,
+                        country: req.body.country,
                     }
                 }
             });
