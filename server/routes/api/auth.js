@@ -52,7 +52,7 @@ router.post('/register' , async(request,responce) => {
         // creating access token
         const accessToken = creatJWToken(newUser._id,newUser.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 2})
-        responce.status(201).json({Message : `new user was created:`,Data: {accessToken}})
+        responce.status(201).json({Message : `new user was created:`,Data: {}})
     } catch(err) {
         // console.log("Errors :" , err);
         errors = errorHandller(err)
@@ -76,7 +76,7 @@ router.post('/login' , async(request,responce) => {
         // creating access token
         const accessToken = creatJWToken(user._id,user.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge:1000 * 60 * 60 * 24 * 2})
-        responce.status(200).json({success : true, Data: { accessToken }})
+        responce.status(200).json({Message : "success", Data: { }})
     }}
     } catch(err) {
         errors = errorHandller(err)
