@@ -7,12 +7,7 @@ const CartItemSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'product'
         },
-        quantity: Number,
-        status: {
-            type: String,
-            default: 'Not processed',
-            enum: ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
-        }
+        quantity: Number
     });
 
 module.exports = mongoose.model('cartItem', CartItemSchema);
