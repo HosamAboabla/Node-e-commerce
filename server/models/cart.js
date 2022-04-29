@@ -6,12 +6,22 @@ const Schema = mongoose.Schema;
 
 const CartSchema = new Schema(
     {
-        products: [CartItemSchema],
+        cartItems: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'cartItem'
+            }
+        ],
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',
             required: true,
             unique: true
+        },
+        status: {
+            type: String,
+            default: 'active',
+            enum: ['active', 'closed']
         }
     },
     { timestamps: true }
