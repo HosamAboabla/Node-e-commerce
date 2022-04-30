@@ -7,18 +7,10 @@ const OrderSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'cart'
         },
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'user'
-        },
-        total: {
-            type: Number,
-            default: 0
-        },
-        updated: Date,
-        created: {
-            type: Date,
-            default: Date.now
+        status: {
+            type: String,
+            default: 'Not processed',
+            enum: ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
         },
     },
     { timestamps: true }
