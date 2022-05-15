@@ -1,24 +1,18 @@
 import React, { useState } from 'react'
-import Postmethod from '../../Postmethod';
-import './AddProductFormStyle.css'
+import Putmethod from '../../Putmethod';
 
-const AddProductForm = () => {
-    const [name , setName] = useState('');
-    const [description , setDescription] = useState('');
-    const [price , setPrice] = useState('');
-    const [quantity , setQuantity] = useState('');
-    const [image , setImage] = useState('')
+const EditProductForm = ({product}) => {
+    const [name , setName] = useState(product.name);
+    const [description , setDescription] = useState(product.description);
+    const [price , setPrice] = useState(product.price);
+    const [quantity , setQuantity] = useState(product.quantity);
+    const [image , setImage] = useState(product.image)
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        Postmethod(`/api/products/create`,{name,description,price,quantity,image})
+        Putmethod(`/api/products/update/${product._id}`,{name,description,price,quantity,image})
         document.getElementById(`createproduct`).className = 'fa fa-check createAnimation createproduct' ; 
         setTimeout(()=>{document.getElementById(`createproduct`).className = 'fa fa-check createproduct' ; 
-        setName('');
-        setDescription('');
-        setPrice('');
-        setQuantity('');
-        setImage('');
         },600)
     }
 
@@ -27,7 +21,7 @@ const AddProductForm = () => {
         <i id ='createproduct' className="fa fa-check createproduct" aria-hidden="true"></i>
         <form onSubmit={handleSubmit}>
             
-            <h3>Add A New Product</h3>
+            <h3>Edit Product</h3>
             <div>
                 <label>Name :</label>
                 <input
@@ -84,7 +78,7 @@ const AddProductForm = () => {
             <input type="submit" class="btn"/>
         </form>
     </div>
-)
+);
 }
 
-export default AddProductForm
+export default EditProductForm;

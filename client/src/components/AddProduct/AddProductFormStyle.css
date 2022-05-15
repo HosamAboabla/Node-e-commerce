@@ -1,13 +1,14 @@
-
 .admin-product-form-container {
-    background-color: #F2F2F2;
+   position: relative;
+   width: 800px;
+   background-color: #F2F2F2;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .admin-product-form-container form{
-   max-width: 50rem;
    margin:0 auto;
    padding:2rem;
-   border-radius: 1.5rem;
    background: #FFF;
 }
 
@@ -16,14 +17,14 @@
    color:var(--black);
    margin-bottom: 1rem;
    text-align: center;
-   font-size: 2.5rem;
+   font-size: 1.5rem;
 }
 
 .admin-product-form-container form label{
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 0;
+   display: block;
+   font-size: 1.25rem;
+   font-weight: 500;
+   margin-bottom: 0;
 
 }
 
@@ -32,36 +33,52 @@
    border: none;
    border-radius: .8rem;
    padding:.5rem 1.5rem;
-   font-size: 1.7rem;
+   font-size: 1rem;
    margin:.3rem 0;
    background: #F2F2F2;
    text-transform: none;
 }
 
 .btn{
-    display: block;
-    width: 100%;
-    cursor: pointer;
-    border-radius: .8rem;
-    margin-top: 1rem;
-    font-size: 1.7rem;
-    padding:1rem 3rem;
-    background: #4FBF30;    
-    color:white;
-    text-align: center;
- }
-
- 
- .btn:hover{
-     color: white;
-    background-color: #44A629;
- }
+   display: block;
+   width: 100px;
+   cursor: pointer;
+   border-radius: .8rem;
+   margin-top: 1rem;
+   font-size: 0.85rem;
+   padding:0.5rem;
+   margin-left: auto;
+   margin-right: auto;
+   background: #4FBF30;    
+   color:white;
+   text-align: center;
+}
 
 
+.btn:hover{
+   color: white;
+   background-color: #44A629;
+}
 
-
-
-
-
-
-
+.createproduct{
+   position: absolute;
+   font-size: 300px;
+   left:250px;
+   top:100px;
+   color :#4FBF30 ;
+   border: 5px solid #4FBF30 ;
+   border-radius: 50%;
+   opacity: 0;
+   display: none;
+} 
+.createAnimation{
+   display: block;
+   animation-name: addproduct;
+   animation-duration: 1s;
+}
+@keyframes addproduct {
+   0% { opacity: 0;}
+   25% {opacity:1;} 
+   75% {opacity:1;} 
+   100% {opacity:0;} 
+}

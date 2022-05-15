@@ -1,0 +1,83 @@
+.admin-dashboard{
+    position: fixed;
+    left:0;
+    height: 100%;
+    width:300px;
+    display: flex;
+}
+
+.admin-nav{
+    width: 300px;
+    margin:auto 0 ;
+}
+
+.admin-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-list-button{
+    border-radius: 7px;
+    position: relative;
+    width : 200px;
+    height: 60px;
+    background-color :#4fbf30 ;
+    color:white;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    margin:10px;
+}
+
+.admin-list-button .fa{
+    font-size: 40px;
+    position: absolute;
+    left: 10px;
+    top:10px;
+}
+.admin-list-text{
+    font-size: 20px;
+    position: absolute;
+    left:60px;
+    top:15px;
+    width: 120px;
+}
+.admin-list-button:hover{
+    width : 220px;
+    color: white;
+    background-color:  #57d335;
+    
+}
+
+.admin-page-style{
+    width: 580px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.admin-page-button{
+    border-radius: 10px;
+    width : 250px;
+    height: 250px;
+    background-color :#4fbf30 ;
+    color:white;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    margin:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.admin-page-button:hover{
+    background-color :#5feb38 ;
+    color:white;
+
+}
+.admin-page-button .fa{
+    font-size: 50px;
+}
+
+.admin-page-button .admin-button-text{
+    font-size: 30px;
+}

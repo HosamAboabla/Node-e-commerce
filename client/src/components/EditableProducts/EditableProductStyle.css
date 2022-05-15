@@ -1,45 +1,41 @@
 .product-display{
-    max-width: 1200px;
-    padding: 3rem 3rem 3rem 30rem;
     display: flex;
     align-items: center;
     justify-content: center;
     margin:0rem 0;
+   background-color: #f2f2f2;
  }
  
  .product-display .product-display-table{
     width: 100%;
+    margin : 0 auto;
     text-align: center;
+    background-color: #fff;
  }
  
  .product-display .product-display-table thead{
-    background: #F2F2F2;
+    background: #fbfbfb;
  }
  
  .product-display .product-display-table th{
-    padding:1rem;
-    font-size: 2rem;
-    border-bottom: .1rem solid black;
+    padding:17px;
+    font-size: 17px;
+    border-bottom: .1px solid black;
  }
  
  
  .product-display .product-display-table td{
-    padding:1rem;
-    font-size: 2rem;
-    border-bottom: .1rem solid black;
+    padding:17px;
+    font-size: 17px;
+    border-bottom: .1px solid black;
  }
  
  .product-display .product-display-table .btn:first-child{
     margin-top: 0;
  }
  
- .product-display .product-display-table .btn:last-child{
-    background: tomato;
- }
- 
- .product-display .product-display-table .btn:last-child:hover{
-    background: rgb(225, 85, 60);
- }
+
+
  
  
 

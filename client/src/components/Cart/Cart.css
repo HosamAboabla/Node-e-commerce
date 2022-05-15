@@ -1,5 +1,4 @@
 .container2{
-
 	max-width: 1200px;
 	background-color: #f2f2f2;
 	margin: 0 auto;
@@ -13,6 +12,7 @@
 	min-height: 100vh;
 }
 .root{
+	height: 100vh;
 	background-color: #f2f2f2;
 }
 
