@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
+const cryptoJS = require('crypto-js')
 const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 // get all users
@@ -25,28 +26,11 @@ router.get('/list/:id',verifyAndAuthorization , async (request,responce) => {
     }
 })
 
-// router.post('/create' , async(request,responce) => {
-//     try{
-//         const item = {
-//             email: request.body.email,
-//             firstName: request.body.firstName,
-//             lastName : request.body.lastName,
-//             PhoneNumber: request.body.PhoneNumber,
-//             isAdmin : request.body.isAdmin,
-//             password : request.body.password,
-//         }
-//         const newUser = new Users(item);
-//         await newUser.save()
-//         responce.status(201).send(`new user was created: ${newUser}`)
-//     } catch(err) {
-//         responce.status(500).json({Message: 'There was an ERROR creating the user',Error: err})
-//     }
-
-// })
-
-
-router.put('/update/:id',verifyAndAuthorization , async (request,responce) => {
+router.put('/update/:id' ,verifyAndAuthorization, async (request,responce) => {
     try{
+        if (request.body.password){
+            var newPass = cryptoJS.AES.encrypt(request.body.password,process.env.password_sec).toString()
+        }
         const updated = await Users.updateOne(
             {_id : request.params.id},
              { $set: {
@@ -55,7 +39,7 @@ router.put('/update/:id',verifyAndAuthorization , async (request,responce) => {
                 lastName : request.body.lastName,
                 PhoneNumber: request.body.PhoneNumber,
                 isAdmin : request.body.isAdmin,
-                password : request.body.password,}});
+                password : newPass}});
         responce.status(201).json(updated)
     }catch(err){
         responce.status(500).json({Message:`There was an ERROR Updating the user data with ID : ${request.params.id}`,Error:err});

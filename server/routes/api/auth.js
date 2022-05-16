@@ -3,6 +3,7 @@ const router = express.Router();
 const Users = require('../../models/user.js');
 const cryptoJS = require("crypto-js")
 const jwt = require("jsonwebtoken");
+const {verify} = require('../verifyToken')
 
 function creatJWToken(id,isAdmin) {
     return jwt.sign({
@@ -87,4 +88,7 @@ router.post('/login' , async(request,responce) => {
     }
 })
 
+router.get('/cookieForReact',verify, (req,res) => {
+        res.status(200).json({Message : 'true',about: 'verfiying token for html changes'})
+})
 module.exports = router;
