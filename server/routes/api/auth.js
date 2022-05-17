@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
+const Cart = require('../../models/cart.js');
 const cryptoJS = require("crypto-js")
 const jwt = require("jsonwebtoken");
 
@@ -45,10 +46,11 @@ router.post('/register' , async(request,responce) => {
                 lastName : request.body.lastName,
                 phoneNumber: request.body.phone,
                 password : request.body.password && cryptoJS.AES.encrypt(request.body.password,process.env.password_sec).toString(),
-                // address : [request.body.address1,request.body.address2]
                 // address : request.body.address
         });
-
+            const newCart = new Cart({user : newUser._id});
+            console.log(newUser._id)
+            await newCart.save()
         // creating access token
         const accessToken = creatJWToken(newUser._id,newUser.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 2})
@@ -73,10 +75,11 @@ router.post('/login' , async(request,responce) => {
         if (unHashed !== request.body.password){
         responce.status(401).json({passwordError : 'Invalid password'})
         }else {
+        const {password, ...others} = user._doc
         // creating access token
         const accessToken = creatJWToken(user._id,user.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge:1000 * 60 * 60 * 24 * 2})
-        responce.status(200).json({Message : "success", Data: { }})
+        responce.status(200).json({Message : "success", Data: {...others,accessToken }})
     }}
     } catch(err) {
         errors = errorHandller(err)

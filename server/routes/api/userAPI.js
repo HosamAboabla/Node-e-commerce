@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
+const Cart = require('../../models/cart.js');
 const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 // get all users
@@ -25,30 +26,11 @@ router.get('/list/:id',verifyAndAuthorization , async (request,responce) => {
     }
 })
 
-// router.post('/create' , async(request,responce) => {
-//     try{
-//         const item = {
-//             email: request.body.email,
-//             firstName: request.body.firstName,
-//             lastName : request.body.lastName,
-//             PhoneNumber: request.body.PhoneNumber,
-//             isAdmin : request.body.isAdmin,
-//             password : request.body.password,
-//         }
-//         const newUser = new Users(item);
-//         await newUser.save()
-//         responce.status(201).send(`new user was created: ${newUser}`)
-//     } catch(err) {
-//         responce.status(500).json({Message: 'There was an ERROR creating the user',Error: err})
-//     }
-
-// })
-
-
-router.put('/update/:id',verifyAndAuthorization , async (request,responce) => {
+router.put('/update',verify , async (request,responce) => {
     try{
+        id = request.user._id
         const updated = await Users.updateOne(
-            {_id : request.params.id},
+            {_id : id},
              { $set: {
                 email: request.body.email,
                 firstName: request.body.firstName,
