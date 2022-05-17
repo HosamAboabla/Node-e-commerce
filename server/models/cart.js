@@ -7,21 +7,17 @@ const Schema = mongoose.Schema;
 const CartSchema = new Schema(
     {
         cartItems: [
-            {
+            {product: {
                 type: Schema.Types.ObjectId,
-                ref: 'cartItem'
-            }
+                ref: 'product'
+            },
+            quantity: Number}
         ],
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',
             required: true,
             unique: true
-        },
-        status: {
-            type: String,
-            default: 'active',
-            enum: ['active', 'closed']
         }
     },
     { timestamps: true }
