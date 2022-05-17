@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 // To handle form and json requrests
 app.use(express.urlencoded({ extended : true }));
 app.use(express.json());
+app.use(cookieParser())     
 
 
 app.use(routes);

@@ -4,6 +4,7 @@ const Users = require('../../models/user.js');
 const Cart = require('../../models/cart.js');
 const cryptoJS = require("crypto-js")
 const jwt = require("jsonwebtoken");
+const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 function creatJWToken(id,isAdmin) {
     return jwt.sign({
@@ -87,4 +88,10 @@ router.post('/login' , async(request,responce) => {
     }
 })
 
+router.get('/verifyUser', verify, (request,responce) => {
+    responce.status(200)
+})
+router.get('/verifyAdmin', verifyAndAdmin, (request,responce) => {
+    responce.status(200)
+})
 module.exports = router;
