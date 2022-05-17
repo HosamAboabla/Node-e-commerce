@@ -10,7 +10,7 @@ const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 router.get('/user',verify, async (request , responce) => {
     try{
         userid = request.user.id
-        const userCart = await  Cart.find().where('user').equals(userid);
+        const userCart = await  Cart.findOne().where('user').equals(userid);
         responce.status(200).json(userCart);
     }
     catch(err){

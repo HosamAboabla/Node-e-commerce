@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
+const cryptoJS = require("crypto-js")
 const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 // get all users
@@ -27,7 +28,7 @@ router.get('/list/:id',verifyAndAdmin , async (request,responce) => {
 // get user 
 router.get('/listUser',verify , async (request,responce) => {
     try{
-        id = request.user.id
+        const id = request.user.id
         const user = await Users.findById(id);
         responce.status(200).json(user);
     }
@@ -38,7 +39,12 @@ router.get('/listUser',verify , async (request,responce) => {
 
 router.put('/update',verify , async (request,responce) => {
     try{
-        id = request.user.id
+        if (request.body.password) {
+            request.body.password = cryptoJS.AES.encrypt(
+                request.body.password,
+                process.env.password_sec)
+                .toString()}
+        const id = request.user.id
         const updated = await Users.updateOne(
             {_id : id},
              { $set: {
@@ -57,7 +63,7 @@ router.put('/update',verify , async (request,responce) => {
 
 router.delete('/delete',verifyAndAuthorization, async (request,responce) => {
     try{
-        id = request.user.id
+        const id = request.user.id
         const removed = await Users.deleteOne({_id : id});
         responce.status(200).json(removed);
     }catch(err){
