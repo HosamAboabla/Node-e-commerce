@@ -14,7 +14,7 @@ router.use('/carts' , CartRoutes);
 router.use('/cartItems' , cartItems);
 router.use('/products' , productRoutes);
 router.use('/users' , userRoutes);
-// router.use('/' , auth);
+
 
 
 module.exports = router;

@@ -1,6 +1,7 @@
 require('dotenv').config({path : 'doc_2022-03-26_21-27-21.env'});
 const express = require("express");
 const app = express();
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const routes = require('./routes');
 const keys = require('./config/keys');

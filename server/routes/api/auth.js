@@ -47,15 +47,18 @@ router.post('/register' , async(request,responce) => {
                 lastName : request.body.lastName,
                 phoneNumber: request.body.phone,
                 password : request.body.password && cryptoJS.AES.encrypt(request.body.password,process.env.password_sec).toString(),
-                // address : request.body.address
+                address : request.body.address
         });
-            const newCart = new Cart({user : newUser._id});
-            console.log(newUser._id)
-            await newCart.save()
+
+        //Creating the user's cart
+        const newCart = new Cart({user : newUser._id});
+        console.log(newUser._id)
+        await newCart.save()
+
         // creating access token
         const accessToken = creatJWToken(newUser._id,newUser.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 2})
-        responce.status(201).json({Message : `new user was created:`,Data: {}})
+        responce.status(201).json({Message : `new user was created:`})
     } catch(err) {
         // console.log("Errors :" , err);
         errors = errorHandller(err)
@@ -69,18 +72,18 @@ router.post('/login' , async(request,responce) => {
     try{
         const user = await Users.findOne({email: request.body.email})
         if (!user){
-        responce.status(401).json({UserError : 'Invalid email'})
+        responce.status(401).json({Message : 'Invalid email'})
         }else {
         const hashedPassword = cryptoJS.AES.decrypt(user.password,process.env.password_sec)
         const unHashed = hashedPassword.toString(cryptoJS.enc.Utf8)
         if (unHashed !== request.body.password){
-        responce.status(401).json({passwordError : 'Invalid password'})
+        responce.status(401).json({Message : 'Invalid password'})
         }else {
         const {password, ...others} = user._doc
         // creating access token
         const accessToken = creatJWToken(user._id,user.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge:1000 * 60 * 60 * 24 * 2})
-        responce.status(200).json({Message : "success", Data: {...others,accessToken }})
+        responce.status(200).json({Message : "success"})
     }}
     } catch(err) {
         errors = errorHandller(err)
