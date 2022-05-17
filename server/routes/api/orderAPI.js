@@ -4,9 +4,10 @@ const Orders = require('../../models/order.js');
 const { verify, verifyAndAuthorization, verifyAndAdmin } = require('../verifyToken')
 
 
-router.get('/user/:id', async (req, res) => {
+router.get('/user', async (req, res) => {
     try {
-        const userOrder = await Orders.find().where('user').equals(req.params.id);
+        const id = req.user.id
+        const userOrder = await Orders.find().where('user').equals(id);
         res.status(200).json(userOrder);
     } catch (err) {
         res.status(500).json({ Message: 'there was an ERROR ', ERROR: err });
