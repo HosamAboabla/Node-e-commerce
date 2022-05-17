@@ -88,6 +88,11 @@ router.post('/login' , async(request,responce) => {
     }
 })
 
+router.get('/logout',(request,responce) => {
+    responce.cookie("jwt",'',{maxAge : 1})
+    responce.redirect("/")
+})
+
 router.get('/verifyUser', verify, (request,responce) => {
     responce.status(200)
 })
