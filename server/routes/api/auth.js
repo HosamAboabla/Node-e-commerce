@@ -97,9 +97,9 @@ router.get('/logout',(request,responce) => {
 })
 
 router.get('/verifyUser', verify, (request,responce) => {
-    responce.status(200)
+    responce.status(200).json({Message: 'User is verified'})
 })
 router.get('/verifyAdmin', verifyAndAdmin, (request,responce) => {
-    responce.status(200)
+    responce.status(200).json(({Message: "Admin is verified"}))
 })
 module.exports = router;
