@@ -51,7 +51,7 @@
     color:#448FF2;
     border-bottom: 1px solid #ccc;
 }
-.details button{
+.details .enabled{
     margin-bottom: 0.5em;
     padding: 6px 10px;
     background: #4FBF30;
@@ -65,8 +65,27 @@
     text-decoration: none;
     margin:2px;  
 }
-.details button:hover {
+.details .disabled{
+    margin-bottom: 0.5em;
+    padding: 6px 10px;
+    background: #2e721b;
+    border: 1px solid white;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    display: inline-block;
+    border-radius: 4px;
+    text-decoration: none;
+    margin:2px;  
+}
+
+.details .enabled:hover {
     background-color: #44A629;
+    color: white;
+}
+.details .disabled{
+    background: #2e721b;
     color: white;
 }
 .details .description{

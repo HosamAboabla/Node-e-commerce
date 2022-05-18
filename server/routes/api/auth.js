@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
+const Cart = require('../../models/cart.js');
 const cryptoJS = require("crypto-js")
 const jwt = require("jsonwebtoken");
+const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 function creatJWToken(id,isAdmin) {
     return jwt.sign({
@@ -45,14 +47,19 @@ router.post('/register' , async(request,responce) => {
                 lastName : request.body.lastName,
                 phoneNumber: request.body.phone,
                 password : request.body.password && cryptoJS.AES.encrypt(request.body.password,process.env.password_sec).toString(),
-                // address : [request.body.address1,request.body.address2]
-                // address : request.body.address
+                address : request.body.address,
+                isAdmin : request.body.isAdmin
         });
+
+        //Creating the user's cart
+        const newCart = new Cart({user : newUser._id});
+        console.log(newUser._id)
+        await newCart.save()
 
         // creating access token
         const accessToken = creatJWToken(newUser._id,newUser.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 2})
-        responce.status(201).json({Message : `new user was created:`,Data: {}})
+        responce.status(201).json({Message : `new user was created:`})
     } catch(err) {
         // console.log("Errors :" , err);
         errors = errorHandller(err)
@@ -66,17 +73,18 @@ router.post('/login' , async(request,responce) => {
     try{
         const user = await Users.findOne({email: request.body.email})
         if (!user){
-        responce.status(401).json({UserError : 'Invalid email'})
+        responce.status(401).json({Message : 'Invalid email'})
         }else {
         const hashedPassword = cryptoJS.AES.decrypt(user.password,process.env.password_sec)
         const unHashed = hashedPassword.toString(cryptoJS.enc.Utf8)
         if (unHashed !== request.body.password){
-        responce.status(401).json({passwordError : 'Invalid password'})
+        responce.status(401).json({Message : 'Invalid password'})
         }else {
+        const {password, ...others} = user._doc
         // creating access token
         const accessToken = creatJWToken(user._id,user.isAdmin)
         responce.cookie('jwt', accessToken, {httpOnly: true, maxAge:1000 * 60 * 60 * 24 * 2})
-        responce.status(200).json({Message : "success", Data: { }})
+        responce.status(200).json({Message : "success"})
     }}
     } catch(err) {
         errors = errorHandller(err)
@@ -84,4 +92,15 @@ router.post('/login' , async(request,responce) => {
     }
 })
 
+router.get('/logout',(request,responce) => {
+    responce.cookie("jwt",'',{maxAge : 1})
+    responce.redirect("/")
+})
+
+router.get('/verifyUser', verify, (request,responce) => {
+    responce.status(200).json({Message:"user"})
+})
+router.get('/verifyAdmin', verifyAndAdmin, (request,responce) => {
+    responce.status(200).json({Message:"admin"})
+})
 module.exports = router;

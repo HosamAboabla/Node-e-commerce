@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../../models/user.js');
+const cryptoJS = require("crypto-js")
 const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
 // get all users
@@ -14,8 +15,8 @@ router.get('/list',verifyAndAdmin , async (request , responce) => {
     }
 })
 
-// get user with id 
-router.get('/list/:id',verifyAndAuthorization , async (request,responce) => {
+// get user with id for admins only
+router.get('/list/:id',verifyAndAdmin , async (request,responce) => {
     try{
         const user = await Users.findById(request.params.id);
         responce.status(200).json(user);
@@ -24,47 +25,46 @@ router.get('/list/:id',verifyAndAuthorization , async (request,responce) => {
         responce.status(500).json({Message:`There was an ERROR fetching the user data with ID :${request.params.id}`,Error:err});
     }
 })
-
-// router.post('/create' , async(request,responce) => {
-//     try{
-//         const item = {
-//             email: request.body.email,
-//             firstName: request.body.firstName,
-//             lastName : request.body.lastName,
-//             PhoneNumber: request.body.PhoneNumber,
-//             isAdmin : request.body.isAdmin,
-//             password : request.body.password,
-//         }
-//         const newUser = new Users(item);
-//         await newUser.save()
-//         responce.status(201).send(`new user was created: ${newUser}`)
-//     } catch(err) {
-//         responce.status(500).json({Message: 'There was an ERROR creating the user',Error: err})
-//     }
-
-// })
-
-
-router.put('/update/:id',verifyAndAuthorization , async (request,responce) => {
+// get user 
+router.get('/listUser',verify , async (request,responce) => {
     try{
+        const id = request.user.id
+        const user = await Users.findById(id);
+        responce.status(200).json(user);
+    }
+    catch(err){
+        responce.status(500).json({Message:`There was an ERROR fetching the user data with ID :${request.params.id}`,Error:err});
+    }
+})
+
+router.put('/update',verify , async (request,responce) => {
+    try{
+        if (request.body.password) {
+            request.body.password = cryptoJS.AES.encrypt(
+                request.body.password,
+                process.env.password_sec)
+                .toString()}
+        const id = request.user.id
         const updated = await Users.updateOne(
-            {_id : request.params.id},
+            {_id : id},
              { $set: {
+                userName: request.body.userName,
                 email: request.body.email,
                 firstName: request.body.firstName,
                 lastName : request.body.lastName,
                 PhoneNumber: request.body.PhoneNumber,
                 isAdmin : request.body.isAdmin,
-                password : request.body.password,}});
+                password : request.body.password}});
         responce.status(201).json(updated)
     }catch(err){
         responce.status(500).json({Message:`There was an ERROR Updating the user data with ID : ${request.params.id}`,Error:err});
     }
 })
 
-router.delete('/delete/:id',verifyAndAuthorization, async (request,responce) => {
+router.delete('/delete',verifyAndAuthorization, async (request,responce) => {
     try{
-        const removed = await Users.deleteOne({_id : request.params.id});
+        const id = request.user.id
+        const removed = await Users.deleteOne({_id : id});
         responce.status(200).json(removed);
     }catch(err){
         console.log(err.Message)

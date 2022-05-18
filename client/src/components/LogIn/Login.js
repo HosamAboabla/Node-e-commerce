@@ -1,5 +1,57 @@
-import "./LogIn.css"
+import "./LogIn.css";
+import  { useState,useContext  } from 'react';
+import Postmethod from "../../Postmethod";
+import  { Navigate } from 'react-router-dom'
+import {UserContext} from '../../UserContext'
+import {AdminContext} from '../../AdminContext'
+
+
 const LogIn = () => {
+    const [email , setEmail] = useState('');
+    const [password , setPassword] = useState('');
+    const [message , setMessage] = useState(null)
+    const [error ,setError] = useState(false);
+    const {user,setUser}= useContext(UserContext);
+    const {setAdmin}= useContext(AdminContext);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setError(false);
+        setMessage(null);
+        let {err, mess} = await Postmethod('/api/auth/login',{email,password})
+        console.log(err);
+        console.log(mess);
+        setMessage(mess);
+        if (err){
+            setError(true)
+        }
+        else{
+            //svae cart to user cart in data base 
+            //compare my cart to user cart and update and delete local storage
+            //save the result in cart state
+            let response1 = await fetch('/api/auth/verifyUser');
+            console.log(response1);
+            if (response1.ok){
+                setUser("true");
+            }
+            else{
+                setUser("false");
+            }
+
+            let response2 = await fetch('/api/auth/verifyAdmin');
+            console.log(response2);
+            if (response2.ok){
+                setAdmin("true");
+            }
+            else{
+                setAdmin("false");
+            }
+        }
+
+        }
+    if (user == "true" ){
+        return <Navigate to='/'  />
+    }
     return ( 
     <div>
         <div className="logo text-center">
@@ -7,34 +59,36 @@ const LogIn = () => {
         </div>
         <div className="wrapper">
             <div className="inner-warpper text-center">
-                <h2 className="title">Login to your account</h2>
-                <form action="" id="LoginFormvalidate">
+                <h2 className="title">Log in</h2>
+                <form onSubmit={handleSubmit} id="LoginFormvalidate">
 
                     <div className="input-group">
-                        <label className="palceholder" for="userName">User Name</label>
-                        <input className="LoginForm-control" name="userName" id="userName" type="text" placeholder="" />
+                        <input 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="LoginForm-control"  
+                        type="email" placeholder="Email" />
                         <span className="lighting"></span>
                     </div>
 
                     <div className="input-group">
-                        <label className="palceholder" for="userPassword">Password</label>
-                        <input className="LoginForm-control" name="userPassword" id="userPassword" type="password" placeholder="" />
+                        <input 
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="LoginForm-control" 
+                        type="password" placeholder="Password" />
                         <span className="lighting"></span>
                     </div>
 
                     <button className="login-button"type="submit" id="login">Login</button>
-
-                    <div className="clearfix supporter">
-                        <div className="pull-left remember-me">
-                            <input id="rememberMe" type="checkbox"/>
-                            <label for="rememberMe">Remember Me</label>
-                        </div>
-                    </div>
-
+                    {error && <div><span style={{color:"red",fontSize:"15px"}}>{message}</span></div>}
                 </form>
             </div>
+            
             <div className="signup-wrapper text-center">
-                <a className='create-acount' href="#">Don't have an accout? <span className="text-primary">Create One</span></a>
+                <a className='create-acount' href="/signup">Don't have an accout? <span className="text-primary">Create One</span></a>
             </div>
         </div>
     </div>

@@ -3,6 +3,8 @@ import './EditableProductStyle.css'
 import ProductsTable from './ProductsTable';
 import useFetch from "../../useFetch";
 import Loading from "../Loading/Loading";
+import AdminNavBar from '../NavBar/AdminNavBar';
+import AdminDashboard from '../AdminDashboard/AdminDashboard';
 
 
 const EditableProducts = () => {
@@ -10,11 +12,15 @@ const EditableProducts = () => {
     const {data : products , error , isPending} = useFetch(link);
 
     return (
-        <div class='product-display'>
+    <div>
+        <AdminNavBar/>
+        <AdminDashboard/>
+        <div className='product-display'>
             {error && <div> {error} </div>} 
             {isPending && <Loading/>}
             {products && <ProductsTable products={products}/>}
-        </div>
+        </div> 
+    </div>
     )
 }
 

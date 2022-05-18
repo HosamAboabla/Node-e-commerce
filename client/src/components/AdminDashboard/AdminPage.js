@@ -1,5 +1,17 @@
+import  { Navigate } from 'react-router-dom'
+import { AdminContext } from '../../AdminContext'
+import { useContext } from 'react';
+import AdminNavBar from '../NavBar/AdminNavBar';
+
 const AdminPage = () => {
-    return ( 
+    const {admin} = useContext(AdminContext);
+
+    if (admin == "false"){
+        return <Navigate to='/'/>
+    }
+    return (
+    <div> 
+        <AdminNavBar/>
         <div className="admin-page-style">
             <a
             className="admin-page-button"
@@ -14,6 +26,7 @@ const AdminPage = () => {
                 <i class='fa fa-edit'></i> <span className='admin-button-text'>Edit Products</span>
             </a>
         </div>
+    </div>
     );
 }
 

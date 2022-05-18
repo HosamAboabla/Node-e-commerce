@@ -88,6 +88,20 @@
     margin:2px;
   }
 
+  .container .ProductCartButtons .add-no {
+    padding: 6px 10px;
+    background: #2e721b;
+    border: 1px solid white;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    display: inline-block;
+    border-radius: 4px;
+    text-decoration: none;
+    margin:2px;
+  }
+
 .container .ProductCartButtons .view {
     padding: 6px 10px;
     background: #448FF2;

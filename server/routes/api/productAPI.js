@@ -46,7 +46,7 @@ router.put('/update/:id',verifyAndAdmin , async (request,responce) => {
     try{
         const updated = await Products.updateOne(
             {_id : request.params.id},
-             { $set: {
+            { $set: {
                 name: request.body.name,
                 description : request.body.description,
                 image : request.body.image,
@@ -57,6 +57,16 @@ router.put('/update/:id',verifyAndAdmin , async (request,responce) => {
         responce.status(201).json(updated)
     }catch(err){
         responce.status(500).json({Message:`There was an ERROR Updating the user data with ID : ${request.params.id}`,Error:err});
+    }
+})
+
+router.put('/dec/:id', verify, async (request,responce) => {
+    try{
+        const updated = await Products.updateOne({_id : request.params.id},
+            {$inc: {quantity: -request.body.quantity}})
+        responce.status(201).json({Message: 'quantity updated successfully'})
+    }catch(err){
+        responce.status(500).json({Message : 'there was an Error updating the quantity', Error: err})
     }
 })
 

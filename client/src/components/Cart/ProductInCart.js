@@ -1,40 +1,80 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../../useFetch";
 import Loading from "../Loading/Loading";
+import  {useContext} from 'react'
+import {CartContext} from '../../CartContext'
+import {TotalpriceContext} from './TotalpriceContext'
 
-const ProductInCart = ({product_id , quantity ,price , cart , setCart}) => {
+    
+const ProductInCart = ({product_id , quantity }) => {
+    const {cart,setCart}= useContext(CartContext);
+    const{totalprice,setTotalprice} = useContext(TotalpriceContext)
 
     const link = `/api/products/list/${product_id}`;
     const {data:product , error , isPending} = useFetch(link);
+    console.log(product)
 
     const [quan,setQuan] = useState(quantity);
+    useEffect(()=>{
+        if (product){
+            setTotalprice((totalprice)+product.price*quan);
+            if (product.quantity < quantity ){
+                cart.map(item => {
+                    if(item.product_id == product_id)
+                    {   
+                        item.quantity = product.quantity;
+                        setCart([...cart]);
+                        setQuan(item.quantity);
+                    }
+                })
+            }
+        }
+        
+    },[product])
+
     const removeCartItem = () => {
         setCart(cart.filter(item => item.product_id !== product_id));
+        setTotalprice(0);
     }
 
     const plusOne = () => {
+        
         cart.map(item => {
             if(item.product_id == product_id)
-            {
+            {   
+                if (item.quantity >= product.quantity) 
+                {   
+                    return
+                }
+                else{
                 item.quantity +=1;
                 setCart([...cart]);
                 setQuan(item.quantity);
+                setTotalprice(totalprice+product.price);
+            }
             }
         })
+        
     }
+        
+    
     const minusOne = () => {
         cart.map(item => {
             if(item.product_id == product_id)
-            {
-                item.quantity -=1   ;
-                setCart([...cart]);
-                if (item.quantity == 0) 
+            {   
+                if (item.quantity == 1) 
                 {   
-                    setCart(cart.filter(item => item.product_id !== product_id));
+                    return
+                }else{
+                    item.quantity -=1 ;
+                    setCart([...cart]);
+                    setTotalprice(totalprice-product.price);
                 }
                 setQuan(item.quantity);
             }
         })
+        
+        
     }
 
 
@@ -55,7 +95,7 @@ const ProductInCart = ({product_id , quantity ,price , cart , setCart}) => {
                     <button onClick={minusOne} className="minus quan">-</button>
                     <span className="product2-quantity">{quan}</span>
                     <button onClick={plusOne} className="plus quan">+</button>
-                    <span className="totalProductInCart">{price*quan} LE</span>
+                    <span className="totalProductInCart">{product.price*quan} LE</span>
                     <p onClick={removeCartItem} className="product2-remove">
                         <i className="fa fa-trash" aria-hidden="true"></i>
                         <span className="remove">Remove</span>

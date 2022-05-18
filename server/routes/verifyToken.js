@@ -16,7 +16,7 @@ const verify = (request, responce, next) => {
 
 const verifyAndAuthorization = (requset,responce,next) => {
     verify(requset,responce, () => {
-        if (requset.user._id === requset.params.id || requset.user.isAdmin) {
+        if (requset.user.id === requset.params.id || requset.user.isAdmin) {
             next()
         }else {
             return responce.status(403).json('You are not allowed')

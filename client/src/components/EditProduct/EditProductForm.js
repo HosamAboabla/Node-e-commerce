@@ -1,21 +1,37 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Putmethod from '../../Putmethod';
+import  { Navigate } from 'react-router-dom'
+import { AdminContext } from '../../AdminContext';
+
+
 
 const EditProductForm = ({product}) => {
     const [name , setName] = useState(product.name);
     const [description , setDescription] = useState(product.description);
     const [price , setPrice] = useState(product.price);
     const [quantity , setQuantity] = useState(product.quantity);
-    const [image , setImage] = useState(product.image)
+    const [image , setImage] = useState(product.image);
 
-    const handleSubmit = (e) =>{
+    const [error , setError] = useState(false);
+    const [message , setMessage] = useState(true);
+
+    const{admin} = useContext(AdminContext);
+
+    const handleSubmit = async (e) =>{
         e.preventDefault()
-        Putmethod(`/api/products/update/${product._id}`,{name,description,price,quantity,image})
-        document.getElementById(`createproduct`).className = 'fa fa-check createAnimation createproduct' ; 
-        setTimeout(()=>{document.getElementById(`createproduct`).className = 'fa fa-check createproduct' ; 
-        },600)
+        let {err,mess} = await Putmethod(`/api/products/update/${product._id}`,{name,description,price,quantity,image});
+        setError(err);
+        setMessage(mess);
+        if(!err){
+            document.getElementById(`createproduct`).className = 'fa fa-check createAnimation createproduct' ; 
+            setTimeout(()=>{document.getElementById(`createproduct`).className = 'fa fa-check createproduct' ; 
+            },600)
+        }
+        
     }
-
+    if (admin == "false"){
+        return <Navigate to='/'/>
+    }
     return (
     <div className="admin-product-form-container">
         <i id ='createproduct' className="fa fa-check createproduct" aria-hidden="true"></i>
@@ -75,6 +91,7 @@ const EditProductForm = ({product}) => {
                 onChange={(e) => setImage(e.target.value)}
                 required/>
             </div> 
+            {error &&<div><span style={{color:"red",fontSize:"15px"}}>{message}</span></div>} 
             <input type="submit" class="btn"/>
         </form>
     </div>

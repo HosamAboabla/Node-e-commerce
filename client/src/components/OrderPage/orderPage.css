@@ -1,0 +1,22 @@
+.orderpagetable{
+    width:1000px;
+    margin : 50px auto;
+    text-align: center;
+    background-color: #fff;
+}
+.orderpagetable thead{
+    background: #fbfbfb;
+ }
+ 
+ .orderpagetable th{
+    padding:17px;
+    font-size: 17px;
+    border-bottom: .1px solid black;
+ }
+ 
+ 
+ .orderpagetable td{
+    padding:17px;
+    font-size: 17px;
+    border-bottom: .1px solid black;
+ }
