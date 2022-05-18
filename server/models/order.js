@@ -3,10 +3,14 @@ const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema(
     {
-        cart: {
-            type: Schema.Types.ObjectId,
-            ref: 'cart'
-        },
+        products: [
+            {product_id: {
+                type: Schema.Types.ObjectId,
+                ref: 'product'
+            },
+            productPrice: Number,
+            quantity: Number}
+        ],
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user'
@@ -14,12 +18,16 @@ const OrderSchema = new Schema(
         total: {
             type: Number,
             default: 0
-        },
-        updated: Date,
-        created: {
-            type: Date,
-            default: Date.now
-        },
+        },address :{ 
+            type : {
+            street : String,
+            city : String,
+            country : String},
+            required: true
+        },status : {
+            type : String ,
+            default : 'Pending ',
+            enum : ["Pending", "Shipped","Delivered","Cancelled"]}
     },
     { timestamps: true }
 );

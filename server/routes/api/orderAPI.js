@@ -4,7 +4,15 @@ const Orders = require('../../models/order.js');
 const { verify, verifyAndAuthorization, verifyAndAdmin } = require('../verifyToken')
 
 
-router.get('/user', async (req, res) => {
+router.get('/allOrders',verifyAndAdmin, async (req, res) => {
+    try {
+        const userOrder = await Orders.find().sort(-1);
+        res.status(200).json(userOrder);
+    } catch (err) {
+        res.status(500).json({ Message: 'there was an ERROR ', ERROR: err });
+    }
+})
+router.get('/user',verify, async (req, res) => {
     try {
         const id = req.user.id
         const userOrder = await Orders.find().where('user').equals(id);
@@ -14,13 +22,25 @@ router.get('/user', async (req, res) => {
     }
 })
 
+router.get('/user/:orderId',verify, async (req, res) => {
+    try {
+        const id = req.user.id
+        const userOrder = await Orders.findOne({_id :req.params.orderId, user : id});
+        res.status(200).json(userOrder);
+    } catch (err) {
+        res.status(500).json({ Message: 'there was an ERROR ', ERROR: err });
+    }
+})
 
-router.post('/create', async (req, res) => {
+
+router.post('/create',verify, async (req, res) => {
     try {
         const newOrder = new Orders({
-            cart: req.body.cart,
-            user: req.body.user,
-            total: req.body.total
+            user: req.user.id,
+            products: req.body.products,
+            total: req.body.total,
+            address : req.body.address,
+            status : req.body.status
         });
         await newOrder.save();
         res.status(201).send(`new order is created:  ${newOrder}`);
@@ -32,7 +52,7 @@ router.post('/create', async (req, res) => {
 
 router.delete('/delete/:id', verifyAndAdmin, async (req, res) => {
     try {
-        const removed = await Orders.deleteOne({ _id: req.params.id });
+        const removed = await Orders.deleteOne({ _id: req.params.id ,user : req.user.id});
         res.status(200).json(removed);
     } catch (err) {
         res.status(500).json({ Message: "The product hasn't been deleted", Error: err });
