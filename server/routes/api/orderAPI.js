@@ -32,7 +32,6 @@ router.get('/user/:orderId',verify, async (req, res) => {
     }
 })
 
-
 router.post('/create',verify, async (req, res) => {
     try {
         const newOrder = new Orders({
@@ -48,7 +47,6 @@ router.post('/create',verify, async (req, res) => {
         res.status(500).json({ Message: 'There was an ERROR', Error: err });
     }
 })
-
 
 router.delete('/delete/:id', verifyAndAdmin, async (req, res) => {
     try {

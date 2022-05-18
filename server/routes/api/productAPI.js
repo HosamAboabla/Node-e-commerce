@@ -60,6 +60,16 @@ router.put('/update/:id',verifyAndAdmin , async (request,responce) => {
     }
 })
 
+router.put('/dec/:id', verify, async (request,responce) => {
+    try{
+        const updated = await Products.updateOne({_id : request.params.id},
+            {$inc: {quantity: -request.body.quantity}})
+        responce.status(201).json({Message: 'quantity updated successfully'})
+    }catch(err){
+        responce.status(500).json({Message : 'there was an Error updating the quantity', Error: err})
+    }
+})
+
 router.delete('/delete/:id',verifyAndAdmin, async (request,responce) => {
     try{
         const removed = await Products.deleteOne({_id : request.params.id});
