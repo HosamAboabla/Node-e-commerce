@@ -47,8 +47,12 @@ router.post('/register' , async(request,responce) => {
                 lastName : request.body.lastName,
                 phoneNumber: request.body.phone,
                 password : request.body.password && cryptoJS.AES.encrypt(request.body.password,process.env.password_sec).toString(),
+<<<<<<< HEAD
                 address : request.body.address,
                 isAdmin : request.body.isAdmin
+=======
+                address : request.body.address
+>>>>>>> 7785a340610652f341a5d39e2a61cb189d5f05da
         });
 
         //Creating the user's cart
@@ -98,9 +102,16 @@ router.get('/logout',(request,responce) => {
 })
 
 router.get('/verifyUser', verify, (request,responce) => {
+<<<<<<< HEAD
     responce.status(200).json({Message:"user"})
 })
 router.get('/verifyAdmin', verifyAndAdmin, (request,responce) => {
     responce.status(200).json({Message:"admin"})
+=======
+    responce.status(200).json({Message: 'User is verified'})
+})
+router.get('/verifyAdmin', verifyAndAdmin, (request,responce) => {
+    responce.status(200).json(({Message: "Admin is verified"}))
+>>>>>>> 7785a340610652f341a5d39e2a61cb189d5f05da
 })
 module.exports = router;

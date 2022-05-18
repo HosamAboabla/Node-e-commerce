@@ -16,6 +16,19 @@ router.get('/user',verify, async (req, res) => {
     try {
         const id = req.user.id
         const userOrder = await Orders.find().where('user').equals(id);
+<<<<<<< HEAD
+        res.status(200).json(userOrder);
+    } catch (err) {
+        res.status(500).json({ Message: 'there was an ERROR ', ERROR: err });
+    }
+})
+
+router.get('/user/:orderId',verify, async (req, res) => {
+    try {
+        const id = req.user.id
+        const userOrder = await Orders.findOne({_id :req.params.orderId, user : id});
+=======
+>>>>>>> 7785a340610652f341a5d39e2a61cb189d5f05da
         res.status(200).json(userOrder);
     } catch (err) {
         res.status(500).json({ Message: 'there was an ERROR ', ERROR: err });
@@ -32,7 +45,6 @@ router.get('/user/:orderId',verify, async (req, res) => {
     }
 })
 
-
 router.post('/create',verify, async (req, res) => {
     try {
         const newOrder = new Orders({
@@ -48,7 +60,6 @@ router.post('/create',verify, async (req, res) => {
         res.status(500).json({ Message: 'There was an ERROR', Error: err });
     }
 })
-
 
 router.delete('/delete/:id', verifyAndAdmin, async (req, res) => {
     try {

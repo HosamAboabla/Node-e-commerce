@@ -12,8 +12,14 @@ const productSchema = new Schema(
             trim: true
         },
         image: String,
-        quantity: Number,
-        price: Number,
+        quantity: {
+            type:Number,
+            min : 0
+        },
+        price:{
+            type:Number,
+            min : 0
+        },
         size: String,
         color: String
     });
