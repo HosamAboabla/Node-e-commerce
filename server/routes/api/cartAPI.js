@@ -9,11 +9,7 @@ const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 // get cart with user id 
 router.get('/user',verify, async (request , responce) => {
     try{
-<<<<<<< HEAD
-        userid = request.user.id
-=======
         const userid = request.user.id
->>>>>>> 7785a340610652f341a5d39e2a61cb189d5f05da
         const userCart = await  Cart.findOne().where('user').equals(userid);
         responce.status(200).json(userCart);
     }
@@ -26,11 +22,7 @@ router.get('/user',verify, async (request , responce) => {
 // Updating the cart
 router.put('/update', verify, async(request,responce) => {
     try{
-<<<<<<< HEAD
-        userid = request.user.id
-=======
         const userid = request.user.id
->>>>>>> 7785a340610652f341a5d39e2a61cb189d5f05da
         const updated = await Cart.updateOne({user : userid},
         {$set :{
             cartItems : request.body.cartItems

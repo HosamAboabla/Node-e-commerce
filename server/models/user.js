@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const AddressSchema = require("./address").schema;
-
 const Schema = mongoose.Schema;
+
 const { isEmail } = require('validator');
 
 const userSchema = new Schema(
@@ -30,7 +29,13 @@ const userSchema = new Schema(
             type: String,
             requied: true
         },
-        address: AddressSchema,
+        address :{ 
+            type : {
+            street : String,
+            city : String,
+            country : String},
+            required: true
+        },
         isAdmin: {
             type: Boolean,
             default: false

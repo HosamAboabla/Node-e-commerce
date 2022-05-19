@@ -10,17 +10,20 @@ const OrderPage = () => {
     const {id} = useParams();
     const link = `/api/orders/user/${id}`;
     const[order,setOrder] = useState(null);
+    const[date,setDate] = useState(null);
     const {data:returned_order , error , isPending} = useFetch(link);
     useEffect(()=>{
         if(returned_order){
             setOrder(returned_order);
+            const date1 = new Date(returned_order.createdAt);
+            setDate(date1.toLocaleDateString())
         }
     },[returned_order])
     console.log(order);
 
     return (
     <div>
-        <NavBar/>
+        <NavBar/>   
         <div className='checkout-all'>
             {error && <div> {error} </div>} 
             {isPending && <Loading/>}
@@ -50,7 +53,8 @@ const OrderPage = () => {
                 </tr>  
                 <tr>
                     <td>Date</td>
-                    <td>{order.createdAt.toLocaleString()}</td>
+                    <td>{date}</td>
+                    {/* <td>{order.createdAt.toLocaleString()}</td> */}
                 </tr>      
             </table>
             }
