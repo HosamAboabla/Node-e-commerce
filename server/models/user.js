@@ -34,7 +34,6 @@ const userSchema = new Schema(
             street : String,
             city : String,
             country : String},
-            required: true
         },
         isAdmin: {
             type: Boolean,
