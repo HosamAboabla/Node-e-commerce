@@ -1,10 +1,12 @@
 import { useContext, useState  } from "react";
+import { Navigate } from "react-router-dom";
 import ProductsTable from "./ProductsTable";
 import { CartContext } from "../../CartContext";
 import { OrderContext,TotalpriceContext,TotalquantityContext } from "./OrderContext";
 import Postmethod from "../../Postmethod";
 import NavBar from "../NavBar/NavBar";
 import Putmethod from "../../Putmethod";
+import { AdminContext } from "../../AdminContext";
 const CheckOut = () => {
     //1-get cart from cart state
     //2-get products info from data base after getting data from cart 
@@ -12,6 +14,8 @@ const CheckOut = () => {
     //4-save order_front_end array (image - name - price - quantity(from cart) - total(quantity*price))
     //5-render table of order_front_end array and address input
     //6- after user enters data send post request with order_data_base array and address
+
+
     const [street,setStreet] = useState('');
     const [city,setCity] = useState('');
     const [country,setCountry] = useState('Egypt');
@@ -54,7 +58,11 @@ const CheckOut = () => {
         }
 
     }
+    const {admin} = useContext(AdminContext);
 
+    if (admin == "true" ){
+        return <Navigate to='/admin'  />
+    }
     return (
         <div>
             <NavBar/>

@@ -15,7 +15,11 @@ const AddProductForm = () => {
     const [error , setError] = useState(false);
     const [message , setMessage] = useState(true);
 
-    const{admin} = useContext(AdminContext);
+    const {admin} = useContext(AdminContext);
+
+    if (admin == "false"){
+        return <Navigate to='/'/>
+    }
 
 
 

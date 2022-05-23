@@ -6,14 +6,14 @@ import {TotalpriceContext} from './TotalpriceContext'
 import NavBar from '../NavBar/NavBar';
 import  { Navigate } from 'react-router-dom';
 import { AdminContext } from '../../AdminContext';
-
-
+import {UserContext} from '../../UserContext'
 
 const Cart = () => {
     const {cart}= useContext(CartContext);
     let totalQuantity = 0;
     const [totalprice ,setTotalprice] = useState(0); 
     const {admin} = useContext(AdminContext);
+    const{user} = useContext(UserContext);
     //console.log('stored cart' , cart);
     if (admin == "true" ){
         return <Navigate to='/admin'  />
@@ -45,7 +45,10 @@ const Cart = () => {
                     </p>
                     <p>
                     </p>
-                    <a href="/checkout">Proceed to Checkout</a>
+                    {user=="true"?
+                    <a href="/checkout">Proceed to Checkout</a>:
+                    <a href="/signup">Proceed to Checkout</a>}
+                    
                 </div>
             </div>
         </div>

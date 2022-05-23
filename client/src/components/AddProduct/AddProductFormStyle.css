@@ -49,7 +49,7 @@
    padding:0.5rem;
    margin-left: auto;
    margin-right: auto;
-   background: #4FBF30;    
+   background: rgb(68, 143, 242);    
    color:white;
    text-align: center;
 }
@@ -57,7 +57,7 @@
 
 .btn:hover{
    color: white;
-   background-color: #44A629;
+   background-color: rgb(94, 162, 252);
 }
 
 .createproduct{
@@ -65,8 +65,8 @@
    font-size: 300px;
    left:250px;
    top:100px;
-   color :#4FBF30 ;
-   border: 5px solid #4FBF30 ;
+   color :rgb(68, 143, 242) ;
+   border: 5px solid rgb(68, 143, 242) ;
    border-radius: 50%;
    opacity: 0;
    display: none;

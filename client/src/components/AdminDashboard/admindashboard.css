@@ -21,7 +21,7 @@
     position: relative;
     width : 200px;
     height: 60px;
-    background-color :#4fbf30 ;
+    background-color :rgb(68, 143, 242) ;
     color:white;
     text-decoration: none;
     transition-duration: 0.4s;
@@ -44,7 +44,7 @@
 .admin-list-button:hover{
     width : 220px;
     color: white;
-    background-color:  #57d335;
+    background-color:  rgb(85, 156, 250);
     
 }
 
@@ -60,7 +60,7 @@
     border-radius: 10px;
     width : 250px;
     height: 250px;
-    background-color :#4fbf30 ;
+    background-color :rgb(68, 143, 242) ;
     color:white;
     text-decoration: none;
     transition-duration: 0.4s;
@@ -70,7 +70,7 @@
     justify-content: center;
 }
 .admin-page-button:hover{
-    background-color :#5feb38 ;
+    background-color :rgb(85, 156, 250) ;
     color:white;
 
 }

@@ -1,10 +1,12 @@
 import './orderPage.css'
-import { useEffect, useState } from "react";
+import { Navigate } from 'react-router-dom';
+import { useEffect, useState,useContext } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../useFetch";
 import NavBar from "../NavBar/NavBar";
 import OrderTable from "./OrderTable";
 import Loading from '../Loading/Loading';
+import { AdminContext } from '../../AdminContext';
 
 const OrderPage = () => {
     const {id} = useParams();
@@ -20,6 +22,11 @@ const OrderPage = () => {
         }
     },[returned_order])
     console.log(order);
+    const {admin} = useContext(AdminContext);
+
+    if (admin == "true" ){
+        return <Navigate to='/admin'  />
+    }
 
     return (
     <div>
