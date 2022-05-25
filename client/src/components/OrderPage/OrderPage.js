@@ -24,7 +24,7 @@ const OrderPage = () => {
     console.log(order);
     const {admin} = useContext(AdminContext);
 
-    if (admin == "true" ){
+    if (admin === "true" ){
         return <Navigate to='/admin'  />
     }
 

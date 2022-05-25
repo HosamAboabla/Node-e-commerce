@@ -27,7 +27,7 @@ const SignUp = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (password != confirm){
+        if (password !== confirm){
             setEqual(false)
             return
         }
@@ -58,7 +58,7 @@ const SignUp = () => {
         }        
 
         }
-    if (user == "true"){
+    if (user === "true"){
         return <Navigate to='/'  />
     }
     return ( 

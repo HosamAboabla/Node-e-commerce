@@ -34,7 +34,7 @@ const NavBar = () => {
             <button  ><i className="fa fa-search"></i></button>
         </div>
         <div className='cartIcon'>
-          {(user == "true")?
+          {(user === "true")?
           <>
           <a onClick={logout} className='nav-text' href='#'>Log out</a>
           <a href='/orders'className='nav-text'>Orders</a>

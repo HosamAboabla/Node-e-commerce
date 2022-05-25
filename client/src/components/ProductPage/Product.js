@@ -12,7 +12,7 @@ const Product = () => {
     const link = `/api/products/list/${id}`;
     const {data:product , error , isPending} = useFetch(link);
     const{admin} = useContext(AdminContext);
-    if (admin == "true" ){
+    if (admin === "true" ){
         return <Navigate to='/admin'  />
     }
     return ( 

@@ -15,7 +15,7 @@ const EditableProducts = () => {
     const {data : products , error , isPending} = useFetch(link);
     const {admin} = useContext(AdminContext);
 
-    if (admin == "false"){
+    if (admin === "false"){
         return <Navigate to='/'/>
     }
 

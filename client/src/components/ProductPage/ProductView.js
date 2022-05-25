@@ -11,7 +11,7 @@ const ProductView = ({product}) => {
         var max_achievef = false;
         let exists = false;
         cart.map(item => {
-            if(item.product_id == product._id)
+            if(item.product_id === product._id)
             {   exists = true;
                 if(product.quantity <= item.quantity){
                     max_achievef = true ;
@@ -22,7 +22,7 @@ const ProductView = ({product}) => {
                 }
             }
         })
-        if(exists == false)
+        if(exists === false)
         {
             setCart([...cart , {product_id : product._id , quantity : 1}]);
         }

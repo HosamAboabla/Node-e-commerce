@@ -49,7 +49,7 @@ const LogIn = () => {
         }
 
         }
-    if (user == "true" ){
+    if (user === "true" ){
         return <Navigate to='/'  />
     }
     return ( 

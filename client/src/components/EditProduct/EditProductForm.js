@@ -29,7 +29,7 @@ const EditProductForm = ({product}) => {
         }
         
     }
-    if (admin == "false"){
+    if (admin === "false"){
         return <Navigate to='/'/>
     }
     return (

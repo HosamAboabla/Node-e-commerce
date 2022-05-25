@@ -14,7 +14,7 @@ const HomePage = () => {
     const {data : products , error , isPending} = useFetch(link);
     const {admin} = useContext(AdminContext)
 
-    if (admin == "true" ){
+    if (admin === "true" ){
         return <Navigate to='/admin'  />
     }
     return (

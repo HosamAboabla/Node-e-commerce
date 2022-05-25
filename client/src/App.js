@@ -59,11 +59,11 @@ function App() {
   ,[])
 
   useEffect(()=>{
-    if (user == false){
+    if (user === false){
       return
     }
     else{
-      if (user == "true")
+      if (user === "true")
     {
         //get cart from data base
         fetch('/api/carts/user').then((res)=>{
@@ -73,7 +73,7 @@ function App() {
         }).then((returncart)=>{
           console.log('getting cart from data base');
           console.log(cart);
-          if (returncart.cartItems == cart ){
+          if (returncart.cartItems === cart ){
             console.log(`not update cart`)
             return
           }else{
@@ -81,7 +81,7 @@ function App() {
           console.log(cart);
         })
     }
-    else if (user == "false")
+    else if (user === "false")
     { 
         //get cart from local storage
         if(localStorage.getItem('cart') === null)
@@ -104,11 +104,11 @@ function App() {
   //save cart changees
     useEffect( () => {
       //handle change in cart 
-      if (user == false){
+      if (user === false){
         return
       }
       else{
-        if (user == "true"){
+        if (user === "true"){
         //if user logged in
         console.log(cart);
         fetch('/api/carts/update',
@@ -120,7 +120,7 @@ function App() {
                 body: JSON.stringify({cartItems:cart})
             }).then((res)=>console .log(res))
     }
-    else if(user == "false"){
+    else if(user === "false"){
       localStorage.setItem('cart' , JSON.stringify(cart)) 
     }
       }

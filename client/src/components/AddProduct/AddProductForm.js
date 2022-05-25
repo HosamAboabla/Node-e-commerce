@@ -17,7 +17,7 @@ const AddProductForm = () => {
 
     const {admin} = useContext(AdminContext);
 
-    if (admin == "false"){
+    if (admin === "false"){
         return <Navigate to='/'/>
     }
 
@@ -39,7 +39,7 @@ const AddProductForm = () => {
         },600)
         }
     }
-    if (admin == "false"){
+    if (admin === "false"){
         return <Navigate to='/'/>
     }
 
