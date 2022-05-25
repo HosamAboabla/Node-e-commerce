@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "## Team members: - Hosam Sayed Ahmed Aboabla - Galal Nasser Mohamed Elfeky - Mohammed Essam Mohammed Abu El-Nasr - Ahmed Fayez Basiony Hussien - Adel ma'mon elwan - Abdallah Alaa Ali Salem",
   "main": "index.js",
+  "engines": {
+    "node": "16.14.0"
+  },
   "scripts": {
     "start": "nodemon server/index.js",
     "client-install": "npm install --prefix client",
