@@ -15,7 +15,7 @@ const HomePage = () => {
     const {admin} = useContext(AdminContext)
 
     if (admin === "true" ){
-        return <Navigate to='/admin'  />
+        // return <Navigate to='/admin'  />
     }
     return (
     <div>
