@@ -16,7 +16,7 @@ const Cart = () => {
     const{user} = useContext(UserContext);
     //console.log('stored cart' , cart);
     if (admin == "true" ){
-        return <Navigate to='/admin'  />
+        // return <Navigate to='/admin'  />
     }
     return (
     <div>
