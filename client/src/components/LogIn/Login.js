@@ -68,7 +68,7 @@ const LogIn = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         className="LoginForm-control"  
-                        type="email" placeholder="Email" />
+                         />
                         <span className="lighting"></span>
                     </div>
 
