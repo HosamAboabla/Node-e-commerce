@@ -43,6 +43,10 @@ const HomePage = () => {
         setSearchResults(results);
       };
       
+    const handleResetSearch = () => {
+        setisSearch(false);
+        setSearchResults([]);
+      };
     const reactPaginatorRef = useRef(null); // Define reactPaginatorRef using useRef
 
     useEffect(() => {
@@ -61,7 +65,7 @@ const HomePage = () => {
     
     return (
         <div>
-        <NavBar onSearchResults={handleSearchResults} />
+        <NavBar onSearchResults={handleSearchResults} onResetSearch={handleResetSearch}/>
         <div className="all">
           <div className="HomeGrid">
             {error && <div> {error} </div>}

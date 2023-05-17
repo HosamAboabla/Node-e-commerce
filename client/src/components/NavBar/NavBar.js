@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 import { AdminContext } from '../../AdminContext';
 
-const NavBar = ({ onSearchResults }) => {
+const NavBar = ({ onSearchResults, onResetSearch }) => {
   const { user, setUser } = useContext(UserContext);
   const { cart } = useContext(CartContext);
   const { setAdmin } = useContext(AdminContext);
@@ -42,6 +42,10 @@ const NavBar = ({ onSearchResults }) => {
       } catch (error) {
         console.error('Error fetching search results:', error);
       }
+    }
+    else
+    {
+      onResetSearch();
     }
   };
 
