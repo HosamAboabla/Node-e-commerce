@@ -1,18 +1,21 @@
-import HomePageProduct from "./HomePageProduct";
-import useFetch from "../../useFetch";
-import Loading from "../Loading/Loading";
-import NavBar from "../NavBar/NavBar";
-import  { Navigate } from 'react-router-dom';
-
-
-import "./HomePageStyle.css";
-import { useContext } from "react";
-import { AdminContext } from "../../AdminContext";
+import HomePageProduct from './HomePageProduct';
+import useFetch from '../../useFetch';
+import Loading from '../Loading/Loading';
+import NavBar from '../NavBar/NavBar';
+import { Navigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { AdminContext } from '../../AdminContext';
 
 const HomePage = () => {
-    const link = '/api/products/list/'  ;
-    const {data : products , error , isPending} = useFetch(link);
-    const {admin} = useContext(AdminContext)
+  const link = '/api/products/list/';
+  const { data: products, error, isPending } = useFetch(link);
+  const { admin } = useContext(AdminContext);
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearch, setisSearch] = useState(false);
+
+  if (admin === 'true') {
+    // return <Navigate to='/admin'  />
+  }
 
     if (admin === "true" ){
         // return <Navigate to='/admin'  />
@@ -30,6 +33,10 @@ const HomePage = () => {
     </div>
     )
 }
+  const handleSearchResults = (results) => {
+    setisSearch(true);
+    setSearchResults(results);
+  };
 
 
 export default HomePage
