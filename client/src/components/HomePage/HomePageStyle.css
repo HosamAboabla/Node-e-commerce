@@ -179,6 +179,45 @@
   animation-duration: 1s;
   
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  user-select: none;
+  pointer-events: auto; /* Add this line to re-enable pointer events */
+
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pagination a:hover {
+  background-color: #f5f5f5;
+}
+
+.pagination .active a {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+
 @keyframes addedToCart {
 0% { opacity: 0;}
 25% {opacity:1;} 
