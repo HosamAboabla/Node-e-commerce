@@ -30,7 +30,9 @@ const HomePage = () => {
 
 
     const handlePageChange = (selectedPage) => {
-      setCurrentPage(selectedPage.selected);
+        setCurrentPage(selectedPage.selected);
+        // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const reactPaginatorRef = useRef(null); // Define reactPaginatorRef using useRef
