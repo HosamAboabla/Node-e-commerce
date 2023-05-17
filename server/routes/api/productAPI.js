@@ -3,15 +3,34 @@ const router = express.Router();
 const Products = require('../../models/product.js');
 const {verify,verifyAndAuthorization,verifyAndAdmin} = require('../verifyToken')
 
-
-router.get("/list", async (request,responce) => {
-    try{
-        const productList = await Products.find()
-        responce.status(200).json(productList)
-    }catch(err) {
-        responce.status(400).json({Message: 'there was an ERROR fetching the products', Error: err})
+//`/api/products/list?page=${currentPage}&limit=${productsPerPage}
+router.get("/list", async (request, response) => {
+    try {
+      const {page} = request.query;
+      const pageNumber = parseInt(page) || 1;
+      const limitNumber = 9;
+  
+      const skip = (pageNumber - 1) * limitNumber;
+  
+      const totalProducts = await Products.countDocuments();
+      const totalPages = Math.ceil(totalProducts / limitNumber);
+  
+      const productList = await Products.find()
+        .skip(skip)
+        .limit(limitNumber);
+  
+      response.status(200).json({
+        products: productList,
+        totalPages: totalPages,
+      });
+    } catch (err) {
+      response.status(400).json({
+        Message: "There was an error fetching the products",
+        Error: err,
+      });
     }
-});
+  });
+  
 
 router.get('/list/:id' , async (request,responce) => {
     try{
