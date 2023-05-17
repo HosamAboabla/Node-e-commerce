@@ -1,3 +1,4 @@
+
 import HomePageProduct from "./HomePageProduct";
 import useFetch from "../../useFetch";
 import Loading from "../Loading/Loading";
@@ -27,12 +28,19 @@ const HomePage = () => {
     const { data, error, isPending } = useFetch(link);
 
     const {admin} = useContext(AdminContext)
+    const [searchResults, setSearchResults] = useState([]);
+    const [isSearch, setisSearch] = useState(false);
 
 
     const handlePageChange = (selectedPage) => {
       setCurrentPage(selectedPage.selected);
     };
 
+    const handleSearchResults = (results) => {
+        setisSearch(true)
+        setSearchResults(results);
+      };
+      
     const reactPaginatorRef = useRef(null); // Define reactPaginatorRef using useRef
 
     useEffect(() => {
@@ -48,34 +56,52 @@ const HomePage = () => {
     if (admin === "true" ){
         // return <Navigate to='/admin'  />
     }
+    
     return (
         <div>
-        <NavBar />
+        <NavBar onSearchResults={handleSearchResults} />
         <div className="all">
           <div className="HomeGrid">
-            {error && <div>{error}</div>}
+            {error && <div> {error} </div>}
             {isPending && <Loading />}
-            {data && data.products.map((product) => (
-              <HomePageProduct key={product._id} product={product} />
-            ))}
+            {
+              isSearch == true ?
+              (
+                  searchResults.length > 0
+                  ? searchResults.map((product) => (
+                      <HomePageProduct key={product._id} product={product} />
+                    ))
+                  : <h1>
+                  no product found
+                  </h1>
+              
+              ) :
+              (
+                  data &&
+                  data.products.map((product) => (
+                    <HomePageProduct key={product._id} product={product} />
+
+                  ))
+              )
+              }
+              
           </div>
-
-          <ReactPaginate
-            previousLabel={'Previous'}
-            nextLabel={'Next'}
-            pageCount={data && parseInt(data.totalPages)}
-            onPageChange={handlePageChange}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
-            ref={reactPaginatorRef} 
-          />
-
+          {
+            isSearch == false &&
+          < ReactPaginate
+                
+                  previousLabel={'Previous'}
+                  nextLabel={'Next'}
+                  pageCount={data && parseInt(data.totalPages)}
+                  onPageChange={handlePageChange}
+                  containerClassName={'pagination'}
+                  activeClassName={'active'}
+                  ref={reactPaginatorRef} 
+                    />
+          }
         </div>
-
-
       </div>
     );
 }
-
 
 export default HomePage

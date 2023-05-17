@@ -32,6 +32,21 @@ router.get("/list", async (request, response) => {
   });
   
 
+router.get('/search/:name', async (request, response) => {
+    try {
+      const products = await Products.find({
+        name: { $regex: request.params.name, $options: 'i' },
+      });
+      response.status(200).json(products);
+    } catch (error) {
+      response.status(400).json({
+        Message: `There was an ERROR fetching the product data with name: ${request.params.name}`,
+        Error: error,
+      });
+    }
+  });
+  
+
 router.get('/list/:id' , async (request,responce) => {
     try{
         const product = await Products.findById(request.params.id);
